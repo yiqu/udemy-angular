@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/404.component';
 import { CompComponent } from './p1/comp.component';
 import { WarningComponent } from './p1/warning/warning.component';
 import { SuccessComponent } from './p1/success/success.component';
+import { DataBindingComponent } from './data-binding/data-binding.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +20,13 @@ import { SuccessComponent } from './p1/success/success.component';
     NotFoundComponent,
     CompComponent,
     SuccessComponent,
-    WarningComponent
+    WarningComponent,
+    DataBindingComponent
   ],
 
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     MaterialModuleBundle,
     ReactiveFormsModule,

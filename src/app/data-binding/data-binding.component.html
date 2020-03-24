@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 2 - Data Binding</h5>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Add a Input field which updates a property ('username') via Two-Way-Binding</li>
+        <li>Output the username property via String Interpolation (in a paragraph below the input)</li>
+        <li>Add a button which may only be clicked if the username is NOT an empty string</li>
+        <li>Upon clicking the button, the username should be reset to an empty string</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h6>Solution</h6>
+      <div>
+        <label>Name:</label>
+        <input class="form-control" [(ngModel)]="userName" placeholder="Enter a name">
+        <p class="mt-3">My name is: {{userName}}</p>
+        <button class="btn btn-primary" (click)="onClick()" [disabled]="userName.trim() === ''">Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+
