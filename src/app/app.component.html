@@ -1,14 +1,20 @@
-<mat-toolbar class="app-header">{{headerTitle}}</mat-toolbar>
+<mat-toolbar class="app-header">
+  <a [routerLink]="'/'">{{headerTitle}}</a>
+</mat-toolbar>
 
 <mat-sidenav-container class="app-container">
   <mat-sidenav #sidenav mode="side" opened class="app-sidenav"
     [fixedInViewport]="false" [fixedTopGap]="true" [fixedBottomGap]="true">
     <mat-list>
-      <div mat-subheader>Practices</div>
+      <div mat-subheader>Practices ({{navList.length}})</div>
       <mat-list-item *ngFor="let item of navList">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <a mat-line [routerLink]="item.url">{{item.display}}</a>
-        <div mat-line> {{item.desc}} </div>
+        <mat-icon mat-list-icon>star</mat-icon>
+        <div>
+          <a mat-line [routerLink]="item.url">{{item.display}}</a>
+          <div class="text-mute"> {{item.desc}} </div>
+        </div>
+        
+        
       </mat-list-item>
     </mat-list>
   </mat-sidenav>

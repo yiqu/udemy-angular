@@ -8,12 +8,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LandingComponent } from './landing/landing.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/404.component';
+import { CompComponent } from './p1/comp.component';
+import { WarningComponent } from './p1/warning/warning.component';
+import { SuccessComponent } from './p1/success/success.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CompComponent,
+    SuccessComponent,
+    WarningComponent
   ],
 
   imports: [

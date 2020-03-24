@@ -31,3 +31,12 @@
   background-color: #595959;
   color: #fff;
 }
+
+.text-mute {
+  font-size: 10px;
+
+}
+
+.app-header a {
+  color: #862d2d;
+}
