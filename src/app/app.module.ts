@@ -12,6 +12,7 @@ import { CompComponent } from './p1/comp.component';
 import { WarningComponent } from './p1/warning/warning.component';
 import { SuccessComponent } from './p1/success/success.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
+import { DirectiveComponent } from './directive/directive.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
     CompComponent,
     SuccessComponent,
     WarningComponent,
-    DataBindingComponent
+    DataBindingComponent,
+    DirectiveComponent
   ],
 
   imports: [

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 2 - Data Binding</h5>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Add A button which says 'Display Details'</li>
+        <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
+        <li>Toggle the displaying of that paragraph with the button created in the first step</li>
+        <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or simply an incrementing number)</li>
+        <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h6>Solution:</h6>
+      <button class="btn btn-primary" (click)="onClick()">{{showDetails ? 'Hide' : 'Display'}} Details</button>
+      <div class="toggled">
+        <h3 *ngIf="showDetails">There is so much details here.</h3>
+      </div>
+      <div>
+        <div *ngFor="let det of clickDetails; index as i">
+          <span 
+            [ngStyle]="{'background-color': i>4?'blue':'white'}"
+            [ngClass]="{'wc': i>4}">{{det.name}} - {{det.time}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

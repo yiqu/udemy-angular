@@ -15,6 +15,7 @@ export class AppComponent {
     this.navList.push(
       new NavItem("Components", "components", "Component display and styling"),
       new NavItem("Data Binding", "data-binding", "Data binding"),
+      new NavItem("Directives", "directives", "Built in directives"),
     );
   }
 }
