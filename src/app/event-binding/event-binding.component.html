@@ -21,7 +21,7 @@
     <div class="col-md-12">
       <h6>Solution</h6>
       <div>
-        <event-binding-control (timerEmit)="onTimerEmit($event)"></event-binding-control>
+        <event-binding-control (timerEmit)="onTimerEmit($event)" (stopGameEmit)="onGameStop($event)"></event-binding-control>
         <ng-template ngFor let-timerCount [ngForOf]="emitList" let-i="index">
           <event-binding-even *ngIf="(timerCount % 2 === 0)">{{timerCount}}</event-binding-even>
           <event-binding-odd *ngIf="(timerCount % 2 !== 0)">{{timerCount}}</event-binding-odd>

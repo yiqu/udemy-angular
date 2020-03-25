@@ -17,4 +17,8 @@ export class EventBindingComponent implements OnInit {
   onTimerEmit(val: number) {
     this.emitList.push(val);
   }
+
+  onGameStop(val) {
+    this.emitList = [];
+  }
 }

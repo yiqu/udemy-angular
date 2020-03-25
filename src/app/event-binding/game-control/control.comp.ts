@@ -13,6 +13,9 @@ export class ControlComponent implements OnInit, OnDestroy {
   @Output()
   timerEmit: EventEmitter<number> = new EventEmitter<number>();
 
+  @Output()
+  stopGameEmit: EventEmitter<any> = new EventEmitter<any>();
+
   timer$: Observable<number> = timer(0, 1000);
   stop$: Subject<any> = new Subject<any>();
 
@@ -24,10 +27,14 @@ export class ControlComponent implements OnInit, OnDestroy {
   ngOnInit() { }
 
   onStartGame() {
+    this.stop$.next();
+    this.stopGameEmit.emit();
+
     this.timer$.pipe(
       takeUntil(this.stop$)
     ).subscribe((val: number) => {
       this.timerEmit.emit(val);
+      console.log("P4 event binding:", val);
     })
   }
 
