@@ -13,6 +13,10 @@ import { WarningComponent } from './p1/warning/warning.component';
 import { SuccessComponent } from './p1/success/success.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { DirectiveComponent } from './directive/directive.component';
+import { EventBindingComponent } from './event-binding/event-binding.component';
+import { EvenComponent } from './event-binding/even/even.comp';
+import { ControlComponent } from './event-binding/game-control/control.comp';
+import { OddComponent } from './event-binding/odd/odd.comp';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { DirectiveComponent } from './directive/directive.component';
     SuccessComponent,
     WarningComponent,
     DataBindingComponent,
-    DirectiveComponent
+    DirectiveComponent,
+    EventBindingComponent,
+    OddComponent,
+    EvenComponent,
+    ControlComponent
   ],
 
   imports: [

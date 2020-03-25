@@ -16,6 +16,7 @@ export class AppComponent {
       new NavItem("Components", "components", "Component display and styling"),
       new NavItem("Data Binding", "data-binding", "Data binding"),
       new NavItem("Directives", "directives", "Built in directives"),
+      new NavItem("Event Binding", "event-binding", "Property and Event Binding, View Encap."),
     );
   }
 }

@@ -5,6 +5,7 @@ import { NotFoundComponent } from './not-found/404.component';
 import { CompComponent } from './p1/comp.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { DirectiveComponent } from './directive/directive.component';
+import { EventBindingComponent } from './event-binding/event-binding.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'components', component: CompComponent },
   { path: 'data-binding', component: DataBindingComponent },
   { path: 'directives', component: DirectiveComponent },
+  { path: 'event-binding', component: EventBindingComponent },
   { path: '**', component: NotFoundComponent }
 ]
 

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 4 - Event Binding</h5>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Create three new components: GameControl, Odd and Even</li>
+        <li>The GameControl Component should have buttons to start and stop the game</li>
+        <li>When starting the game, an event (holding a incrementing number) should get emitted each second (ref = setInterval())</li>
+        <li>The event should be listenable from outside the component</li>
+        <li>When stopping the game, no more events should get emitted (clearInterval(ref))</li>
+        <li>A new Odd component should get created for every odd number emitted, the same should happen for the Even Component (on even numbers)</li>
+        <li>Simply output Odd - NUMBER or Even - NUMBER in the two components</li>
+        <li>Style the element (e.g. paragraph) holding your output text differently in both components</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h6>Solution</h6>
+      <div>
+        <event-binding-control (timerEmit)="onTimerEmit($event)"></event-binding-control>
+        <ng-template ngFor let-timerCount [ngForOf]="emitList" let-i="index">
+          <event-binding-even *ngIf="(timerCount % 2 === 0)">{{timerCount}}</event-binding-even>
+          <event-binding-odd *ngIf="(timerCount % 2 !== 0)">{{timerCount}}</event-binding-odd>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
