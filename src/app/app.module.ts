@@ -17,6 +17,7 @@ import { EventBindingComponent } from './event-binding/event-binding.component';
 import { EvenComponent } from './event-binding/even/even.comp';
 import { ControlComponent } from './event-binding/game-control/control.comp';
 import { OddComponent } from './event-binding/odd/odd.comp';
+import { DirDeepComponent } from './directives-deep/deep.comp';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { OddComponent } from './event-binding/odd/odd.comp';
     EventBindingComponent,
     OddComponent,
     EvenComponent,
-    ControlComponent
+    ControlComponent,
+    DirDeepComponent
   ],
 
   imports: [

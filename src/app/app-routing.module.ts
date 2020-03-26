@@ -6,6 +6,7 @@ import { CompComponent } from './p1/comp.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
+import { DirDeepComponent } from './directives-deep/deep.comp';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'data-binding', component: DataBindingComponent },
   { path: 'directives', component: DirectiveComponent },
   { path: 'event-binding', component: EventBindingComponent },
+  { path: 'dir-deep', component: DirDeepComponent },
   { path: '**', component: NotFoundComponent }
 ]
 

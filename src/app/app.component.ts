@@ -17,6 +17,7 @@ export class AppComponent {
       new NavItem("Data Binding", "data-binding", "Data binding"),
       new NavItem("Directives", "directives", "Built in directives"),
       new NavItem("Event Binding", "event-binding", "Property and Event Binding, View Encap."),
+      new NavItem("Directives Deep Dive", "dir-deep", "Directives Deep Dive"),
     );
   }
 }
