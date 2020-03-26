@@ -18,6 +18,11 @@ import { EvenComponent } from './event-binding/even/even.comp';
 import { ControlComponent } from './event-binding/game-control/control.comp';
 import { OddComponent } from './event-binding/odd/odd.comp';
 import { DirDeepComponent } from './directives-deep/deep.comp';
+import { BasicHighlightDirective } from './directives-deep/highlight/highlight.dir';
+import { BetterHighlightDirective } from './directives-deep/highlight/highlight-better.dir';
+import { ListenHighlightDirective } from './directives-deep/highlight/listen-highlight-dir';
+import { BindingHighlightDirective } from './directives-deep/highlight/binding.dir';
+import { CustomHighlightDirective } from './directives-deep/highlight/custom-input.dir';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,12 @@ import { DirDeepComponent } from './directives-deep/deep.comp';
     OddComponent,
     EvenComponent,
     ControlComponent,
-    DirDeepComponent
+    DirDeepComponent,
+    BasicHighlightDirective,
+    BetterHighlightDirective,
+    ListenHighlightDirective,
+    BindingHighlightDirective,
+    CustomHighlightDirective
   ],
 
   imports: [
