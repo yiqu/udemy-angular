@@ -15,12 +15,12 @@ export class CustomHighlightDirective implements OnInit {
   @HostBinding("style.backgroundColor") 
   color: string;
   
-  @HostListener('mouseenter') 
+  @HostListener('mouseenter', ['$event']) 
   onMouseOver(data: Event){
     this.color = this.highLight ? this.highLight : this.defaultColor;
   }
 
-  @HostListener('mouseleave') 
+  @HostListener('mouseleave', ['$event']) 
   onMouseLeave(data: Event){
     this.color = this.defaultColor;
   }

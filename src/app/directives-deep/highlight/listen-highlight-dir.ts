@@ -6,14 +6,14 @@ import { Directive, ElementRef, OnInit, Renderer2, HostListener } from "@angular
 })
 export class ListenHighlightDirective implements OnInit {
   
-  @HostListener('mouseenter') 
+  @HostListener('mouseenter', ['$event']) 
   onMouseOver(data: Event){
     this.renderer.setStyle(this.eleRef.nativeElement, 'text-decoration', 'underline');
     this.renderer.setStyle(this.eleRef.nativeElement, 'background-color', 'green');
     this.renderer.setStyle(this.eleRef.nativeElement, 'color', 'white');
   }
 
-  @HostListener('mouseleave') 
+  @HostListener('mouseleave', ['$event']) 
   onMouseLeave(data: Event){
     this.renderer.setStyle(this.eleRef.nativeElement, 'text-decoration', 'none');
     this.renderer.setStyle(this.eleRef.nativeElement, 'background-color', 'initial');
