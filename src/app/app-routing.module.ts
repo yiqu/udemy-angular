@@ -7,6 +7,7 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { DirDeepComponent } from './directives-deep/deep.comp';
+import { ServiceComponent } from './services/service.comp';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,8 @@ const routes: Routes = [
   { path: 'directives', component: DirectiveComponent },
   { path: 'event-binding', component: EventBindingComponent },
   { path: 'dir-deep', component: DirDeepComponent },
+  { path: 'services', component: ServiceComponent },
+
   { path: '**', component: NotFoundComponent }
 ]
 

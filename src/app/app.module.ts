@@ -23,6 +23,9 @@ import { BetterHighlightDirective } from './directives-deep/highlight/highlight-
 import { ListenHighlightDirective } from './directives-deep/highlight/listen-highlight-dir';
 import { BindingHighlightDirective } from './directives-deep/highlight/binding.dir';
 import { CustomHighlightDirective } from './directives-deep/highlight/custom-input.dir';
+import { ServiceComponent } from './services/service.comp';
+import { ActiveComponent } from './services/active/active.component';
+import { InactiveComponent } from './services/inactive/inactive.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { CustomHighlightDirective } from './directives-deep/highlight/custom-inp
     BetterHighlightDirective,
     ListenHighlightDirective,
     BindingHighlightDirective,
-    CustomHighlightDirective
+    CustomHighlightDirective,
+    ServiceComponent,
+    InactiveComponent,
+    ActiveComponent
   ],
 
   imports: [
