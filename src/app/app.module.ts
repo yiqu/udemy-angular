@@ -26,6 +26,7 @@ import { CustomHighlightDirective } from './directives-deep/highlight/custom-inp
 import { ServiceComponent } from './services/service.comp';
 import { ActiveComponent } from './services/active/active.component';
 import { InactiveComponent } from './services/inactive/inactive.component';
+import { RoutingComponentModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { InactiveComponent } from './services/inactive/inactive.component';
     MaterialModuleBundle,
     ReactiveFormsModule,
     RouterModule,
+    RoutingComponentModule,
     AppRoutingModule
   ],
 

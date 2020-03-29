@@ -19,6 +19,7 @@ export class AppComponent {
       new NavItem("Event Binding", "event-binding", "Property and Event Binding, View Encap."),
       new NavItem("Directives Deep Dive", "dir-deep", "Directives Deep Dive"),
       new NavItem("Services", "services", "Service Injection"),
+      new NavItem("Routing", "routing", "Routing"),
     );
   }
 }

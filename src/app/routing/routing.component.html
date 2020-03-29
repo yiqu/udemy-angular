@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 7 - Routing</h5>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Routing practice</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h6>Solution:</h6>
+      <h6>
+        World of Warcraft Class Guides.
+      </h6>
+      <div>
+        Please pick a class below to view details.
+      </div>
+    </div>
+  </div>
+  <div class="mt-5">
+    <a [routerLink]="'./'"> Home </a>
+    <button class="btn btn-outline-primary btn btn-sm" (click)="goHome()">Home (js style)</button>
+    <button *ngFor="let item of guideList" class="btn btn-outline-primary btn btn-sm ml-2"
+      (click)="goClass(item)">Go to {{item.display}} (js style)</button>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <div class="list-group">
+        <a *ngFor="let item of guideList"
+          [routerLink]="item.url" class="list-group-item list-group-item-action" >
+
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{item.display}}</h5>
+            <small>{{item.updated}}</small>
+          </div>
+          <p class="mb-1"> {{item.display}} Guide.</p>
+          <small>{{item.desc}}</small>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
