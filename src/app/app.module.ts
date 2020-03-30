@@ -24,6 +24,10 @@ import { ListenHighlightDirective } from './directives-deep/highlight/listen-hig
 import { BindingHighlightDirective } from './directives-deep/highlight/binding.dir';
 import { CustomHighlightDirective } from './directives-deep/highlight/custom-input.dir';
 import { DropDownDirective } from './directives-deep/dropdown/dropdown.dir';
+import { ServiceComponent } from './services/service.comp';
+import { ActiveComponent } from './services/active/active.component';
+import { InactiveComponent } from './services/inactive/inactive.component';
+import { RoutingComponentModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,10 @@ import { DropDownDirective } from './directives-deep/dropdown/dropdown.dir';
     ListenHighlightDirective,
     BindingHighlightDirective,
     CustomHighlightDirective,
-    DropDownDirective
+    DropDownDirective,
+    ServiceComponent,
+    InactiveComponent,
+    ActiveComponent
   ],
 
   imports: [
@@ -55,6 +62,7 @@ import { DropDownDirective } from './directives-deep/dropdown/dropdown.dir';
     MaterialModuleBundle,
     ReactiveFormsModule,
     RouterModule,
+    RoutingComponentModule,
     AppRoutingModule
   ],
 

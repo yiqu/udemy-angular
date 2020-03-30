@@ -1,3 +1,10 @@
+
+/** Make mat list item titles in Nav menu wrap text**/
+::ng-deep .mat-list .mat-list-item .mat-line {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
 .app-container {
   position: absolute;
   top: 70px;
@@ -40,3 +47,4 @@
 .app-header a {
   color: #862d2d;
 }
+

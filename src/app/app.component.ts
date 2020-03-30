@@ -10,7 +10,7 @@ export class AppComponent {
   headerTitle: string = "Udemy Angular Guide Practices";
   footerTitle: string = "KQ @2020";
   navList: NavItem[] = [];
-  
+
   constructor() {
     this.navList.push(
       new NavItem("Components", "components", "Component display and styling"),
@@ -18,6 +18,8 @@ export class AppComponent {
       new NavItem("Directives", "directives", "Built in directives"),
       new NavItem("Event Binding", "event-binding", "Property and Event Binding, View Encap."),
       new NavItem("Directives Deep Dive", "dir-deep", "Directives Deep Dive"),
+      new NavItem("Services", "services", "Service Injection"),
+      new NavItem("Routing", "routing", "Routing"),
     );
   }
 }

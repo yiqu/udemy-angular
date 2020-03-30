@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 6 - Services</h5>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Create an Active and Inactive list, and use a service to manage the lists.</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h6>Solution:</h6>
+      <div>List of Users</div>
+      <app-active *ngFor="let user of activeUsers" [u]="user"></app-active>
+      <app-inactive *ngFor="let user of inactiveUsers" [u]="user"></app-inactive>
+    </div>
+  </div>
+</div>

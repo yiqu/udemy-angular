@@ -1,5 +1,6 @@
 export class NavItem {
-  constructor(public display: string, public url: string, public desc: string) {
+  constructor(public display: string, public url: string, public desc: string,
+    public updated?: number) {
 
   }
 }
