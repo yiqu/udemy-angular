@@ -6,7 +6,7 @@
       <h6>Requirments:</h6>
       <ol>
         <li>Create a basic directive to give the element a background color. This is a less used approach
-          because it directly access the DOM. But at certain times, your app does not have access to the DOM, i.e. 
+          because it directly access the DOM. But at certain times, your app does not have access to the DOM, i.e.
           in Service Workers.
         </li>
       </ol>
@@ -35,7 +35,7 @@
     <div class="col-md-12">
       <h6>Solution:</h6>
       <div>
-        <p betterHighlight>This is a paragraph of text using directive using Renderer2. 
+        <p betterHighlight>This is a paragraph of text using directive using Renderer2.
         </p>
       </div>
     </div>
@@ -54,7 +54,7 @@
     <div class="col-md-12">
       <h6>Solution:</h6>
       <div>
-        <p listenHighlight>This is a paragraph of text using directive using Host Listener for mouse events. 
+        <p listenHighlight>This is a paragraph of text using directive using Host Listener for mouse events.
         </p>
       </div>
     </div>
@@ -65,7 +65,7 @@
       <h6>Requirments:</h6>
       <ol>
         <li>Create a directive using HostBinding to bind a property to its value. When you mouse over,
-          the paragraph will have a class 
+          the paragraph will have a class
           'valid' appended to it. This is done by the directive.
         </li>
       </ol>
@@ -85,7 +85,7 @@
       <hr>
       <h6>Requirments:</h6>
       <ol>
-        <li>Create a directive using the user's input for the background color. 
+        <li>Create a directive using the user's input for the background color.
           Also user enters a color for the default color, grey in this case.
           Mouse over to see.
         </li>
@@ -107,9 +107,37 @@
             Blue Color
           </option>
         </select>
-        <p [customHighlight]="bgColor" 
+        <p [customHighlight]="bgColor"
           [defaultColor]="'grey'">Custom directive based on users input. {{bgColor}}
         </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Create a dropdown behavior using a directive to add the class 'show' when toggling.
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h6>Solution:</h6>
+      <div>
+        <div>Drop Down</div>
+        <div class="dropdown">
+          <button class="btn btn-primary" type="button" (click)="onBtnClick()">
+            Dropdown button
+          </button>
+          <div [dropDown]="clicked" class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

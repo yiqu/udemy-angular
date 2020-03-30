@@ -23,6 +23,7 @@ import { BetterHighlightDirective } from './directives-deep/highlight/highlight-
 import { ListenHighlightDirective } from './directives-deep/highlight/listen-highlight-dir';
 import { BindingHighlightDirective } from './directives-deep/highlight/binding.dir';
 import { CustomHighlightDirective } from './directives-deep/highlight/custom-input.dir';
+import { DropDownDirective } from './directives-deep/dropdown/dropdown.dir';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CustomHighlightDirective } from './directives-deep/highlight/custom-inp
     BetterHighlightDirective,
     ListenHighlightDirective,
     BindingHighlightDirective,
-    CustomHighlightDirective
+    CustomHighlightDirective,
+    DropDownDirective
   ],
 
   imports: [

@@ -9,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class DirDeepComponent implements OnInit {
 
   bgColor: string = null;
+  clicked: boolean = false;
 
   constructor() { }
 
   ngOnInit() { }
+
+  onBtnClick() {
+    this.clicked = !this.clicked;
+  }
 }
