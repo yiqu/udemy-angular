@@ -12,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', component: LandingComponent},
       { path: 'mage', component: MageComponent },
+      { path: 'mage/:id', component: MageComponent },
       { path: 'priest', component: PriestComponent },
       { path: 'warrior', component: WarComponent },
       { path: 'admin', component: AdminComponent }
