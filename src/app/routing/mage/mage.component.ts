@@ -8,7 +8,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class MageComponent implements OnInit {
-  constructor(public router: Router, public route: ActivatedRoute) { }
+
+  listOfIds: any[] = [];
+
+  constructor(public router: Router, public route: ActivatedRoute) {
+    this.listOfIds.push(...[1,2,3,4,5]);
+  }
 
   ngOnInit() { }
 

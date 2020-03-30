@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PriestComponent implements OnInit {
-  constructor() { }
+
+  listOfIds: any[] = [];
+
+  constructor() {
+    this.listOfIds.push(...[1,2,3,4,5]);
+  }
 
   ngOnInit() { }
 }

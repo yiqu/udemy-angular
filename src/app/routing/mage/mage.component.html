@@ -10,4 +10,11 @@
     <button class="btn btn-outline-primary btn btn-sm" (click)="goHomeRelative3()">Go to 'mage', relative to current route (the route
       that loaded this component)</button>
   </div>
+
+  <div>
+    Choose a mage ID
+  </div>
+  <div *ngFor="let id of listOfIds">
+    <a [routerLink]="id">Mage {{id}}</a>
+  </div>
 </div>

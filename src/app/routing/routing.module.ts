@@ -9,14 +9,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
+import { ClassDetailComponent } from './detail/class-detail.component';
+import { PriestModule } from './priest/priest.module';
+import { ClassDetailModule } from './detail/detail.module';
 
 @NgModule({
   imports: [
-    RoutingRoutingModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    //PriestModule,
+    ClassDetailModule,
+    RoutingRoutingModule
+
   ],
 
   exports: [],
@@ -24,10 +30,10 @@ import { LandingComponent } from './landing/landing.component';
   declarations: [
     RoutingComponent,
     AdminComponent,
-    PriestComponent,
+    //PriestComponent,
     MageComponent,
     WarComponent,
-    LandingComponent
+    LandingComponent,
   ],
 
   providers: [],
