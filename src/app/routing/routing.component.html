@@ -22,16 +22,36 @@
     </div>
   </div>
   <div class="mt-5">
-    <a [routerLink]="'./'"> Home </a>
-    <button class="btn btn-outline-primary btn btn-sm" (click)="goHome()">Home (js style)</button>
-    <button *ngFor="let item of guideList" class="btn btn-outline-primary btn btn-sm ml-2"
+    <div>
+      <a [routerLink]="'./'" [routerLinkActive]="'link active'"> Routing Home: './'
+       CSS active is applied if part of ./ </a>
+    </div>
+    <div>
+      <a [routerLink]="'./'" [routerLinkActive]="'link active'"
+        [routerLinkActiveOptions]="{exact: true}"> Routing Home: './'  BUT CSS active is applied only on exact URL match </a>
+    </div>
+    <div>
+      <a [routerLink]="['./', 'mage']"> Go to mage with an array of paths: ['./', 'mage'] </a>
+    </div>
+    <div>
+      <button class="btn btn-outline-primary btn btn-sm" (click)="goHome()">Go to 'mage', NO relative set</button>
+    </div>
+    <div>
+      <button class="btn btn-outline-primary btn btn-sm" (click)="goHomeRelative()">Go to 'mage', relative to current route (the route
+        that loaded this component)
+      </button>
+    </div>
+    <div>
+      <button *ngFor="let item of guideList" class="btn btn-outline-primary btn btn-sm mr-2"
       (click)="goClass(item)">Go to {{item.display}} (js style)</button>
+    </div>
+
   </div>
 
   <div class="row mt-3">
     <div class="col-md-4">
       <div class="list-group">
-        <a *ngFor="let item of guideList"
+        <a *ngFor="let item of guideList" [routerLinkActive]="'active'"
           [routerLink]="item.url" class="list-group-item list-group-item-action" >
 
           <div class="d-flex w-100 justify-content-between">

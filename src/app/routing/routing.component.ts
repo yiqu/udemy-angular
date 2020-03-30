@@ -24,7 +24,11 @@ export class RoutingComponent implements OnInit {
   ngOnInit() { }
 
   goHome() {
-    this.router.navigate(['./'], {relativeTo: this.route});
+    this.router.navigate(['mage']);
+  }
+
+  goHomeRelative() {
+    this.router.navigate(['mage'], {relativeTo: this.route});
   }
 
   goClass(item: NavItem) {

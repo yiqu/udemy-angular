@@ -1,4 +1,13 @@
 <div>
   <h6>Mage Guide</h6>
-
+  <div>
+    <button class="btn btn-outline-primary btn btn-sm" (click)="goHomeRelative()">Go to [routing, priest]</button>
+  </div>
+  <div>
+    <button class="btn btn-outline-primary btn btn-sm" (click)="goHomeRelative2()">Go to 'mage', NO relative to current route</button>
+  </div>
+  <div>
+    <button class="btn btn-outline-primary btn btn-sm" (click)="goHomeRelative3()">Go to 'mage', relative to current route (the route
+      that loaded this component)</button>
+  </div>
 </div>
