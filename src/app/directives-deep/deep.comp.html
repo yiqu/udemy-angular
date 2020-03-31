@@ -141,4 +141,47 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Create a directive to capitalize inputs
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h6>Solution:</h6>
+      <div>
+        <input capitalizeDir class="form-control" placeholder="Will be capitalized" [(ngModel)]="capValue">
+      </div>
+      <div>
+        Value entered: {{capValue}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Max character in inputs (4)
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h6>Solution:</h6>
+      <div>
+        Character allowed (enter a number): <input class="form-control mb-3" placeholder="" [(ngModel)]="maxCharAllowed">
+        <input [maxValue]="maxCharAllowed" class="form-control" placeholder="" [(ngModel)]="mValue">
+      </div>
+      <div>
+        Value entered: {{mValue}} Char length: {{mValue ? mValue.length : '0'}}
+      </div>
+    </div>
+  </div>
 </div>

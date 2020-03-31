@@ -10,6 +10,9 @@ export class DirDeepComponent implements OnInit {
 
   bgColor: string = null;
   clicked: boolean = false;
+  capValue: string = null;
+  mValue: string = null;
+  maxCharAllowed: number = 4;
 
   constructor() { }
 

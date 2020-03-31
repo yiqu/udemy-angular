@@ -28,6 +28,7 @@ import { ServiceComponent } from './services/service.comp';
 import { ActiveComponent } from './services/active/active.component';
 import { InactiveComponent } from './services/inactive/inactive.component';
 import { RoutingComponentModule } from './routing/routing.module';
+import { CapitalizeDirective, MaxCharDirective } from './directives-deep/highlight/cap.dir';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,8 @@ import { RoutingComponentModule } from './routing/routing.module';
     ListenHighlightDirective,
     BindingHighlightDirective,
     CustomHighlightDirective,
+    MaxCharDirective,
+    CapitalizeDirective,
     DropDownDirective,
     ServiceComponent,
     InactiveComponent,

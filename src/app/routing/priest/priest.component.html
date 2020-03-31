@@ -1,9 +1,9 @@
 <div class="mb-3">
   <h6>Priest Guide</h6>
-  <a [routerLink]="'./'"> Priest Guide Home</a>
+  <a [routerLink]="'./'" [routerLinkActive]="'link active'"> Priest Guide Home</a>
 </div>
 
 <div *ngFor="let id of listOfIds">
-  <a [routerLink]="id">Priest {{id}}</a>
+  <a [routerLink]="id" [routerLinkActive]="'link active'">Priest {{id}}</a>
 </div>
 <router-outlet></router-outlet>
