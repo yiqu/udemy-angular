@@ -9,6 +9,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 export class ClassDetailComponent implements OnInit {
   classId: string;
+  valueObj;
 
   constructor(public router: Router, public route: ActivatedRoute) {
 
@@ -17,6 +18,10 @@ export class ClassDetailComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((res: ParamMap) => {
       this.classId = res.get("id");
+      this.valueObj = {};
+      res.keys.forEach((key) => {
+        this.valueObj[key] = res.get(key);
+      })
     })
   }
 }

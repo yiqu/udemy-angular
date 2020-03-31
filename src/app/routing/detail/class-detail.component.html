@@ -1,6 +1,11 @@
 <div class="row mt-5">
   <div class="col text-center">
-    <h6>You are seeing the ClassDetailComponent!</h6>
+    <h6>
+      You are seeing the ClassDetailComponent!
+      <div>
+        {{valueObj | json}}
+      </div>
+    </h6>
   </div>
 </div>
 <div *ngIf="classId; else noneSelected">
@@ -9,6 +14,11 @@
       Class Detail for {{classId}}.
       This is shown as a child of this class.
       Class -> '' (Class component) -> (children of) -> ':id' which is this component
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      All of the param value: {{valueObj | json}}
     </div>
   </div>
 </div>

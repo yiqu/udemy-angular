@@ -1,4 +1,20 @@
-<div>
+<div class="mb-3">
   <h6>Warrior Guide</h6>
-
+  <a [routerLink]="'./'" [routerLinkActive]="'link active'"> Warrior Guide Home</a>
 </div>
+
+Links with single dynamic ID: /warrior/id
+<div *ngFor="let id of listOfIds">
+  <a [routerLink]="[id]" [routerLinkActive]="'link active'">Warrior {{id}}</a>
+</div>
+
+Links with TWO dynamic IDs: /warrior/id/id
+<div *ngFor="let id of listOfIds">
+  <a [routerLink]="[id, 'warrior'+id]" [routerLinkActive]="'link active'">Warrior {{id}} / warrior{{id}}</a>
+</div>
+
+Links with TWO dynamic IDs and single hardcoded ID: /warrior/id/id/ended
+<div *ngFor="let id of listOfIds">
+  <a [routerLink]="[id, 'warrior'+id, 'ended']" [routerLinkActive]="'link active'">Warrior {{id}} /warrior{{id}} /ended </a>
+</div>
+<router-outlet></router-outlet>
