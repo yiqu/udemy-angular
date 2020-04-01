@@ -16,7 +16,6 @@ const routes: Routes = [
     children: [
       { path: '', component: LandingComponent},
       { path: 'mage', component: MageComponent },
-
       //{ path: 'mage/mage', component: LandingComponent }, //<- this will catch mage/mage before the :id catches it and treats it like an id
       { path: 'mage/:id', component: ClassDetailComponent },
 

@@ -1,20 +1,61 @@
-<div class="mb-3">
-  <h6>Warrior Guide</h6>
-  <a [routerLink]="'./'" [routerLinkActive]="'link active'"> Warrior Guide Home</a>
+<div class="row">
+  <div class="col-8">
+    <div class="mb-3">
+      <h6>Warrior Guide | Has children, nested Outlet</h6>
+      <a [routerLink]="'./'" [routerLinkActive]="'link active'"> Warrior Guide Home</a>
+    </div>
+
+    Links with single dynamic ID, and one query param: /warrior/id | default
+    <div *ngFor="let id of listOfIds">
+      <a [routerLink]="[id]"
+        [routerLinkActive]="'link active'"
+        [queryParams]="{'tank':true}">
+          Warrior {{id}} tank=true</a>
+    </div>
+
+    <div class="mt-2">TWO dynamic IDs: /warrior/id/id | default param handling</div>
+    <div *ngFor="let id of listOfIds">
+      <a [routerLink]="[id, 'warrior'+id]"
+        [routerLinkActive]="'link active'"
+        [queryParams]="{dps:true, blah:true}">
+          Warrior {{id}} / warrior{{id}} dps=true blah=true</a>
+    </div>
+
+    <div class="mt-2">TWO dynamic IDs: /warrior/id/id | perserve query param</div>
+    <div *ngFor="let id of listOfIds">
+      <a [routerLink]="[id, 'warrior'+id]"
+        [routerLinkActive]="'link active'"
+        [queryParams]="{dpsPreserve:true, hi:true, h2:true}"
+        [queryParamsHandling]="'preserve'">
+          Warrior {{id}} / warrior{{id}} dpsPreserve=true hi=true h2=true</a>
+    </div>
+
+    <div class="mt-2">TWO dynamic IDs: /warrior/id/id | merge query param</div>
+    <div *ngFor="let id of listOfIds">
+      <a [routerLink]="[id, 'warrior'+id]"
+        [routerLinkActive]="'link active'"
+        [queryParams]="{dpsMerge:true, hi:true, h2:true, blah:false}"
+        [queryParamsHandling]="'merge'">
+          Warrior {{id}} / warrior{{id}} dpsMerge=true hi=true h2=true blah=false</a>
+    </div>
+
+    <div class="mt-2">TWO dynamic IDs and single hardcoded ID: /warrior/id/id/ended</div>
+    <div *ngFor="let id of listOfIds">
+      <a [routerLink]="[id, 'warrior'+id, 'ended']"
+        [routerLinkActive]="'link active'">Warrior {{id}} /warrior{{id}} /ended </a>
+    </div>
+
+    <div class="mt-2">TWO dynamic IDs and single hardcoded ID: /warrior/id/id/ended | perserve query param</div>
+    <div *ngFor="let id of listOfIds">
+      <a [routerLink]="[id, 'warrior'+id, 'ended']"
+        [routerLinkActive]="'link active'"
+        [queryParamsHandling]="'preserve'">Warrior {{id}} /warrior{{id}} /ended  PERSERVE params</a>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
-Links with single dynamic ID: /warrior/id
-<div *ngFor="let id of listOfIds">
-  <a [routerLink]="[id]" [routerLinkActive]="'link active'">Warrior {{id}}</a>
-</div>
 
-Links with TWO dynamic IDs: /warrior/id/id
-<div *ngFor="let id of listOfIds">
-  <a [routerLink]="[id, 'warrior'+id]" [routerLinkActive]="'link active'">Warrior {{id}} / warrior{{id}}</a>
-</div>
-
-Links with TWO dynamic IDs and single hardcoded ID: /warrior/id/id/ended
-<div *ngFor="let id of listOfIds">
-  <a [routerLink]="[id, 'warrior'+id, 'ended']" [routerLinkActive]="'link active'">Warrior {{id}} /warrior{{id}} /ended </a>
-</div>
-<router-outlet></router-outlet>

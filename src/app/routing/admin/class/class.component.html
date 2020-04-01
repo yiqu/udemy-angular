@@ -9,7 +9,9 @@
     </div>
     <hr>
     <div *ngFor="let id of classIds">
-      <a [routerLink]="[id, 'edit']" routerLinkActive="link active">{{id}}</a>
+      <a [routerLink]="[id, 'edit']"
+        [queryParams]="{'canEdit': canUserEdit}"
+        routerLinkActive="link active">{{id}}</a>
     </div>
   </div>
 

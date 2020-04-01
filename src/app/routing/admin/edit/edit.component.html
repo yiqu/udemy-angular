@@ -3,4 +3,8 @@
   <hr>
   <div>Current params: {{paramsObj | json}}</div>
   <div>Editing ID: {{currentId}}</div>
+  <div>
+    <label>Detail name (can edit: {{canEdit}}): </label>
+    <input [(ngModel)]="detailName" class="form-control" [disabled]="!canEdit">
+  </div>
 </div>

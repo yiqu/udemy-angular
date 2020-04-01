@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class WarComponent implements OnInit {
 
-  listOfIds: any[] = [1,2,3];
+  listOfIds: any[] = [1,2];
 
   constructor() { }
 
