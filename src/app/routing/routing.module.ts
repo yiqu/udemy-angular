@@ -13,6 +13,8 @@ import { ClassDetailComponent } from './detail/class-detail.component';
 import { PriestModule } from './priest/priest.module';
 import { ClassDetailModule } from './detail/detail.module';
 import { EndedComponent } from './ended/ended.component';
+import { AdminClassComponent } from './admin/class/class.component';
+import { AdminEditComponent } from './admin/edit/edit.component';
 
 @NgModule({
   imports: [
@@ -35,6 +37,8 @@ import { EndedComponent } from './ended/ended.component';
     MageComponent,
     WarComponent,
     EndedComponent,
+    AdminClassComponent,
+    AdminEditComponent,
     LandingComponent,
   ],
 

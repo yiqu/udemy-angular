@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-3">
+    <div>
+      <h6>{{currentClass | uppercase}}</h6>
+    </div>
+    Static data: {{staticData | json}}
+    <div>
+      Select a ID to edit:
+    </div>
+    <hr>
+    <div *ngFor="let id of classIds">
+      <a [routerLink]="[id, 'edit']" routerLinkActive="link active">{{id}}</a>
+    </div>
+  </div>
+
+  <div class="col-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

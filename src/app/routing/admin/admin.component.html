@@ -1,4 +1,18 @@
 <div>
   <h6>Admin Lounge</h6>
+  <hr>
+  <div class="row">
+    <div class="col-3">
+      static data: {{staticData | json}}
+      <div>Choose a class to edit. (using routerLink to generate the links)</div>
+      <hr>
+      <div *ngFor="let class of classList">
+        <a [routerLink]="[class]" routerLinkActive="link active">{{class | uppercase}}</a>
 
+      </div>
+    </div>
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
