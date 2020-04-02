@@ -10,6 +10,8 @@ import { ClassDetailComponent } from './detail/class-detail.component';
 import { EndedComponent } from './ended/ended.component';
 import { AdminClassComponent } from './admin/class/class.component';
 import { AdminEditComponent } from './admin/edit/edit.component';
+import { AdminGuard, AdminChildrenOnlyGuard } from './guards/admin-guard.service';
+import { CanDeactivateSavedGuard } from './guards/saved-guard.service';
 
 const routes: Routes = [
   { path: 'routing', component: RoutingComponent,
@@ -31,11 +33,14 @@ const routes: Routes = [
 
       ]},
 
-      { path: 'admin', component: AdminComponent, data: {location: "Admin"},
+      { path: 'admin', component: AdminComponent,
+        data: {location: "Admin"},
+        canActivate: [AdminGuard],
+        //canActivateChild: [AdminChildrenOnlyGuard],
         children:[
           { path: ":className", component: AdminClassComponent, data: {location: "Class"},
             children: [
-              { path: ':id/edit', component: AdminEditComponent}
+              { path: ':id/edit', component: AdminEditComponent, canDeactivate: [CanDeactivateSavedGuard]}
             ]
           }
         ]

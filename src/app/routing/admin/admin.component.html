@@ -1,5 +1,10 @@
 <div>
   <h6>Admin Lounge | Has children, multiple nested Outlet</h6>
+  <h5>{{rs.isLoggedIn ? 'You are logged in' : ''}}</h5>
+  <div>
+    <button class="btn btn-primary btn-sm" (click)="logIn(true)">Login for details</button>
+    <button *ngIf="loggedIn" class="btn btn-primary btn-sm" (click)="logIn(false)">Log Out</button>
+  </div>
   <hr>
   <div class="row">
     <div class="col-3">

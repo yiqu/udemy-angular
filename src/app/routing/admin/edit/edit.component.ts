@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, CanDeactivate } from '@angular/router';
+import { CanComponentDeactivate } from '../../guards/saved-guard.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogConfirmComponent } from 'src/app/shared/dialog/dialog.component';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-r-admin-edit',
@@ -7,15 +11,16 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./edit.component.css']
 })
 
-export class AdminEditComponent implements OnInit {
+export class AdminEditComponent implements OnInit, CanComponentDeactivate {
 
   paramsObj: {} = {};
   currentId: string;
   detailName: string;
   canEdit: boolean;
+  saved: boolean = true;
+  dialogRef: MatDialogRef<DialogConfirmComponent>;
 
-  constructor(public router: Router, public route: ActivatedRoute) {
-
+  constructor(public router: Router, public route: ActivatedRoute, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -33,6 +38,27 @@ export class AdminEditComponent implements OnInit {
     })
   }
 
+  canDeactivate() {
+    if (this.saved) {
+      return true;
+    }
+    this.openDialog();
+    return this.dialogRef.afterClosed().pipe(
+      map((res: boolean) => {
+        if (res) {
+          this.saved = true;
+          return true;
+        }
+        return false;
+      })
+    );
+  }
+
+  onEdit() {
+    this.saved = false;
+  }
+
+
   setName(id: string) {
     this.detailName = "Name" + id;
   }
@@ -43,5 +69,18 @@ export class AdminEditComponent implements OnInit {
 
   toType(obj) {
     return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+  }
+
+  saveChanges() {
+    window.alert("Saved, but not really.")
+    this.saved = true;
+  }
+
+  openDialog(): void {
+    this.dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '250px',
+      data: null
+    });
+
   }
 }

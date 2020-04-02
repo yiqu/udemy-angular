@@ -5,6 +5,10 @@
   <div>Editing ID: {{currentId}}</div>
   <div>
     <label>Detail name (can edit: {{canEdit}}): </label>
-    <input [(ngModel)]="detailName" class="form-control" [disabled]="!canEdit">
+    <input [(ngModel)]="detailName" class="form-control" [disabled]="!canEdit" (ngModelChange)="onEdit()">
+  </div>
+  <div>
+    <button mat-raised-button color="primary" (click)="saveChanges()">Save changes</button>
+    <p class="text-muted">Save changes before leaving. Or CanDeactivate kicks in and presents you from leaving</p>
   </div>
 </div>

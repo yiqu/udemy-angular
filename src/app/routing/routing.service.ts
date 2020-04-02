@@ -7,7 +7,8 @@ import { delay } from 'rxjs/operators';
 })
 export class RoutingPracticeService {
 
-  isLoggedIn: boolean = false;
+  public isLoggedIn: boolean = false;
+  public canSeeClassDetail: boolean = false;
 
   constructor() {
 
@@ -19,8 +20,14 @@ export class RoutingPracticeService {
 
   getAdminStatus(): Observable<boolean> {
     return of(this.isLoggedIn).pipe(
-      delay(2000)
+      delay(0)
     );
+  }
+
+  getAdminChildrenStatus(): Observable<boolean> {
+    return of(this.canSeeClassDetail).pipe(
+      delay(0)
+    )
   }
 
 }

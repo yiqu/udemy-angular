@@ -23,6 +23,10 @@
       <div>
         Please pick a class below to view details.
       </div>
+      <div>
+        <button class="btn btn-primary btn-sm" (click)="logIn(true)">Log In</button>
+        <button *ngIf="loggedIn" class="btn btn-primary btn-sm" (click)="logIn(false)">Log Out</button>
+      </div>
     </div>
   </div>
   <div class="mt-5">

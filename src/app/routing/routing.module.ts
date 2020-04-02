@@ -15,6 +15,8 @@ import { ClassDetailModule } from './detail/detail.module';
 import { EndedComponent } from './ended/ended.component';
 import { AdminClassComponent } from './admin/class/class.component';
 import { AdminEditComponent } from './admin/edit/edit.component';
+import { DialogConfirmComponent } from '../shared/dialog/dialog.component';
+import { MaterialModuleBundle } from '../shared/material-bundle.module';
 
 @NgModule({
   imports: [
@@ -24,8 +26,8 @@ import { AdminEditComponent } from './admin/edit/edit.component';
     RouterModule,
     //PriestModule,
     ClassDetailModule,
+    MaterialModuleBundle,
     RoutingRoutingModule
-
   ],
 
   exports: [],
@@ -40,6 +42,7 @@ import { AdminEditComponent } from './admin/edit/edit.component';
     AdminClassComponent,
     AdminEditComponent,
     LandingComponent,
+    DialogConfirmComponent
   ],
 
   providers: [],

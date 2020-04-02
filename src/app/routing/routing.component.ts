@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavItem } from '../shared/models/nav-item.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { RoutingPracticeService } from './routing.service';
 
 @Component({
   selector: 'app-routing',
@@ -11,8 +12,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RoutingComponent implements OnInit {
 
   guideList: NavItem[] = [];
+  loggedIn: boolean = false;
 
-  constructor(public router: Router, public route: ActivatedRoute) {
+  constructor(public router: Router, public route: ActivatedRoute, public rs: RoutingPracticeService) {
     this.guideList.push(
       new NavItem("Mage", "mage", "Mage Class", 0),
       new NavItem("Priest", "priest", "Priest Class", 0),
@@ -33,5 +35,10 @@ export class RoutingComponent implements OnInit {
 
   goClass(item: NavItem) {
     this.router.navigate([item.url], {relativeTo: this.route});
+  }
+
+  logIn(status: boolean) {
+    this.loggedIn = status;
+    this.rs.setLoggedIn(status);
   }
 }
