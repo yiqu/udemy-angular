@@ -3,7 +3,8 @@ import { Router, ActivatedRoute, ParamMap, CanDeactivate } from '@angular/router
 import { CanComponentDeactivate } from '../../guards/saved-guard.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogConfirmComponent } from 'src/app/shared/dialog/dialog.component';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-r-admin-edit',
@@ -20,7 +21,7 @@ export class AdminEditComponent implements OnInit, CanComponentDeactivate {
   saved: boolean = true;
   dialogRef: MatDialogRef<DialogConfirmComponent>;
 
-  constructor(public router: Router, public route: ActivatedRoute, public dialog: MatDialog) {
+  constructor(public router: Router, public route: ActivatedRoute, public dialog: MatDialog, public http: HttpClient) {
   }
 
   ngOnInit() {
@@ -51,6 +52,18 @@ export class AdminEditComponent implements OnInit, CanComponentDeactivate {
         }
         return false;
       })
+      // If you want to save it via http
+
+      // switchMap((res) => {
+      //   return this.http.get("hello").pipe(
+      //     map((res) => {
+      //       if (res === 200) {
+      //         return true
+      //       }
+      //       return false;
+      //     })
+      //   );
+      // })
     );
   }
 

@@ -17,6 +17,7 @@ import { AdminClassComponent } from './admin/class/class.component';
 import { AdminEditComponent } from './admin/edit/edit.component';
 import { DialogConfirmComponent } from '../shared/dialog/dialog.component';
 import { MaterialModuleBundle } from '../shared/material-bundle.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { MaterialModuleBundle } from '../shared/material-bundle.module';
     //PriestModule,
     ClassDetailModule,
     MaterialModuleBundle,
+    HttpClientModule,
     RoutingRoutingModule
   ],
 
