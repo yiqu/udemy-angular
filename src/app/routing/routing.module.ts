@@ -18,6 +18,7 @@ import { AdminEditComponent } from './admin/edit/edit.component';
 import { DialogConfirmComponent } from '../shared/dialog/dialog.component';
 import { MaterialModuleBundle } from '../shared/material-bundle.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DataResolver } from './resolvers/data-resolver.service';
 
 @NgModule({
   imports: [
@@ -47,6 +48,8 @@ import { HttpClientModule } from '@angular/common/http';
     DialogConfirmComponent
   ],
 
-  providers: [],
+  providers: [
+    DataResolver
+  ],
 })
 export class RoutingComponentModule { }

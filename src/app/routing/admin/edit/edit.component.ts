@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap, CanDeactivate } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, CanDeactivate, Data } from '@angular/router';
 import { CanComponentDeactivate } from '../../guards/saved-guard.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogConfirmComponent } from 'src/app/shared/dialog/dialog.component';
@@ -36,6 +36,10 @@ export class AdminEditComponent implements OnInit, CanComponentDeactivate {
 
     this.route.queryParamMap.subscribe((res: ParamMap) => {
       this.setCanEdit(res.get("canEdit"));
+    });
+
+    this.route.data.subscribe((data: Data) => {
+      console.log(data)
     })
   }
 

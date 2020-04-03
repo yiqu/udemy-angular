@@ -3,15 +3,15 @@
     <div>
       <h6>{{currentClass | uppercase}}</h6>
     </div>
-    Static data: {{staticData | json}}
+    <!-- Static data: {{staticData | json}} -->
     <div>
-      Select a ID to edit:
+      Select a ID to edit <span clas="text-muted">(Takes 1 second to load, due to Resolver)</span>:
     </div>
     <hr>
-    <div *ngFor="let id of classIds">
+    <div *ngFor="let id of classIds" class="mb-2">
       <a [routerLink]="[id, 'edit']"
         [queryParams]="{'canEdit': canUserEdit}"
-        routerLinkActive="link active">{{id}}</a>
+        routerLinkActive="link active">{{id}} </a>
     </div>
   </div>
 

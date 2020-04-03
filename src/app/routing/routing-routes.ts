@@ -12,6 +12,7 @@ import { AdminClassComponent } from './admin/class/class.component';
 import { AdminEditComponent } from './admin/edit/edit.component';
 import { AdminGuard, AdminChildrenOnlyGuard } from './guards/admin-guard.service';
 import { CanDeactivateSavedGuard } from './guards/saved-guard.service';
+import { DataResolver } from './resolvers/data-resolver.service';
 
 const routes: Routes = [
   { path: 'routing', component: RoutingComponent,
@@ -40,7 +41,9 @@ const routes: Routes = [
         children:[
           { path: ":className", component: AdminClassComponent, data: {location: "Class"},
             children: [
-              { path: ':id/edit', component: AdminEditComponent, canDeactivate: [CanDeactivateSavedGuard]}
+              { path: ':id/edit', component: AdminEditComponent,
+                resolve: {detailData: DataResolver},
+                canDeactivate: [CanDeactivateSavedGuard]}
             ]
           }
         ]
