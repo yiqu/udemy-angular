@@ -20,6 +20,7 @@ export class AdminEditComponent implements OnInit, CanComponentDeactivate {
   canEdit: boolean;
   saved: boolean = true;
   dialogRef: MatDialogRef<DialogConfirmComponent>;
+  resolvedData: unknown;
 
   constructor(public router: Router, public route: ActivatedRoute, public dialog: MatDialog, public http: HttpClient) {
   }
@@ -39,7 +40,7 @@ export class AdminEditComponent implements OnInit, CanComponentDeactivate {
     });
 
     this.route.data.subscribe((data: Data) => {
-      console.log(data)
+      this.resolvedData = data;
     })
   }
 
