@@ -34,11 +34,8 @@ const routes: Routes = [
 
       ]},
 
-      { path: 'admin', component: AdminComponent,
-        data: {location: "Admin"},
-        canActivate: [AdminGuard],
-        //canActivateChild: [AdminChildrenOnlyGuard],
-        children:[
+      { path: 'admin', component: AdminComponent, data: {location: "Admin"}, canActivate: [AdminGuard], //canActivateChild: [AdminChildrenOnlyGuard],
+        children: [
           { path: ":className", component: AdminClassComponent, data: {location: "Class"},
             children: [
               { path: ':id/edit', component: AdminEditComponent,
