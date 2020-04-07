@@ -18,7 +18,9 @@ const routes: Routes = [
   { path: 'event-binding', component: EventBindingComponent },
   { path: 'dir-deep', component: DirDeepComponent },
   { path: 'services', component: ServiceComponent },
-
+  { path: 'observables',
+    loadChildren: () => import('./observables/obs.module').then(m => m.ObsModule)
+  },
   { path: '**', component: NotFoundComponent }
 ]
 

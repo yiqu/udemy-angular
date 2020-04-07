@@ -20,6 +20,7 @@ export class AppComponent {
       new NavItem("Directives Deep Dive", "dir-deep", "Directives Deep Dive"),
       new NavItem("Services", "services", "Service Injection"),
       new NavItem("Routing", "routing", "Routing"),
+      new NavItem("Observables", "observables", "Observables")
     );
   }
 }

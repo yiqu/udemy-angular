@@ -48,3 +48,8 @@
   color: #862d2d;
 }
 
+::ng-deep .mat-list .mat-list-item.left-nav-item.active {
+  background-color: #e6e6ff;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
