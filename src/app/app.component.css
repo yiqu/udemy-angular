@@ -53,3 +53,7 @@
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
+
+::ng-deep .mat-tab-link.mat-tab-label-active {
+  color: #000099;
+}

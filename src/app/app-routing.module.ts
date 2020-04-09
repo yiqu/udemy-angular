@@ -21,6 +21,9 @@ const routes: Routes = [
   { path: 'observables',
     loadChildren: () => import('./observables/obs.module').then(m => m.ObsModule)
   },
+  { path: 'forms',
+    loadChildren: () => import('./forms/forms.module').then(m => m.FormsComponentModule)
+  },
   { path: '**', component: NotFoundComponent }
 ]
 
