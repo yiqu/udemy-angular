@@ -1,0 +1,44 @@
+<div class="row mt-3">
+  <div class="col-md-12">
+    <h6>Requirments:</h6>
+    <ol>
+      <li>Creating an Observable from scratch. Using Observable.create() </li>
+    </ol>
+  </div>
+</div>
+<hr>
+<div class="row mt-2">
+  <div class="col-md-12">
+    <h6>Solution</h6>
+
+    <div class="mb-3">
+      Observable #1, That Completes:
+      <div>
+        Last value: {{obsThatCompleteValue}}
+      </div>
+      <div>
+        Completed: {{obsThatCompleteStatus}}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      Observable #2, That Does Not Complete:
+      <div>
+        Last value: {{obsThatDoesNotCompleteValue}}
+      </div>
+      <div>
+        Completed: {{obsThatDoesNotCompleteStatus}}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      Observable #3, That has an error (will happen on 6):
+      <div>
+        Last value: {{obsThatHasErrorValue}}
+      </div>
+      <div>
+        Completed: {{obsThatHasErrorCompletes}}
+      </div>
+    </div>
+  </div>
+</div>

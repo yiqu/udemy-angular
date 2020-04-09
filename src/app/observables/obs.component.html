@@ -3,28 +3,19 @@
     <div class="col-md-12">
       <h5>Practice 8 - Observables</h5>
       <hr>
-      <h6>Requirments:</h6>
-      <ol>
-        <li>Creating an interval observable using rxjs interval, timer </li>
-      </ol>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <h6>Solution</h6>
-      <div>
-        Number of times subscribed - interval$: {{intervalSubCount}} , timer$: {{timerSubCount}}
-      </div>
-      <div>
-        <button class="btn btn-primary btn-sm mr-3" (click)="onStartInterval()">Start</button>
-        <button class="btn btn-primary btn-sm" (click)="onStopInterval()">Stop</button>
-      </div>
-      <div>
-        Interval value: {{intervalValue}} (has a 1 second delay due to emitting 0 as first value)
-      </div>
-      <div>
-        Timer value: {{timerValue}}
-      </div>
+      <nav mat-tab-nav-bar [backgroundColor]="undefined">
+        <a mat-tab-link *ngFor="let link of tabLinks"
+          (click)="activeLink = link"
+          [active]="activeLink == link"
+          [routerLink]="[link.url]">
+            {{link.display}}
+        </a>
+      </nav>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

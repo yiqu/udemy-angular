@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subject, Subscription, interval, timer } from 'rxjs';
 import { takeUntil, startWith } from 'rxjs/operators';
+import { NavItem } from '../shared/models/nav-item.model';
 
 @Component({
   selector: 'app-o',
@@ -11,57 +12,22 @@ import { takeUntil, startWith } from 'rxjs/operators';
 export class ObsComponent implements OnInit, OnDestroy {
 
   compDest$: Subject<any> = new Subject<any>();
-
-  intervalValue: number = 0;
-  timerValue: number = 0;
-  intervalSubCount: number = 0;
-  timerSubCount: number = 0;
-
-  basicTimerInterval$: Subscription;
+  tabLinks: NavItem[] = [];
+  activeLink: NavItem;
 
   constructor() {
 
   }
 
   ngOnInit() {
-    this.startInterval();
-    this.startTimer();
+    this.tabLinks.push(
+      new NavItem("Creation", "create", "creating observable from scratch"),
+      new NavItem("Rxjs/Interval | Timer", "int-timer", "rxjs interval and timer")
+    );
+    this.activeLink = this.tabLinks[0];
   }
 
   ngOnDestroy() {
-    this.compDest$.next();
   }
 
-  startInterval() {
-    this.intervalSubCount++;
-    interval(1000).pipe(
-      takeUntil(
-        this.compDest$
-      )
-    ).subscribe((val: number) => {
-      this.intervalValue = val;
-    })
-  }
-
-  startTimer() {
-    this.timerSubCount++;
-    timer(0, 1000).pipe(
-      takeUntil(
-        this.compDest$
-      )
-    ).subscribe((res:  number) => {
-      this.timerValue = res;
-    })
-  }
-
-  onStartInterval() {
-    this.startInterval();
-    this.startTimer();
-  }
-
-  onStopInterval() {
-    this.timerSubCount = 0;
-    this.intervalSubCount = 0;
-    this.compDest$.next();
-  }
 }
