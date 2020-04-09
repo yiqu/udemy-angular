@@ -16,7 +16,7 @@ export class Utilservice {
 
   openSnackBar(message: string) {
     this.sbr = this._snackBar.openFromComponent(SnackBarComponent, {
-      duration: 100 * 1000,
+      duration: 4 * 1000,
       data: message
     });
 
