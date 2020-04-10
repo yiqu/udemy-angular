@@ -1,0 +1,11 @@
+input.ng-touched.ng-valid {
+  background-color: #e6ffe6;
+}
+
+input.ng-touched.ng-invalid {
+  background-color: #ffc2b3;
+}
+
+.p-10 {
+  padding: 10px;
+}

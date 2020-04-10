@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Utilservice } from 'src/app/shared/util.service';
 import { NgForm } from '@angular/forms';
 
@@ -8,10 +8,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./template.component.css']
 })
 
-export class TemplateFormsComponent implements OnInit {
+export class TemplateFormsComponent implements OnInit, AfterViewInit {
+
+  @ViewChild("myForm")
+  f: NgForm;
+
+  fValues: unknown;
+  formValid: boolean;
 
   formValues: unknown;
   wholeForm: NgForm;
+
+  userAdminStatus: boolean = true;
+  defaultEmail: string = "Kevin@aol.com"
+
+  genderList: string[] = ["Male", "Female"];
 
   constructor(public us: Utilservice) {
 
@@ -21,10 +32,22 @@ export class TemplateFormsComponent implements OnInit {
 
   }
 
+  ngAfterViewInit() {
+    this.f.valueChanges.subscribe((val) => {
+      this.fValues = val;
+      this.formValid = this.f.valid;
+      console.log(this.f.form)
+    });
+  }
+
   onFormSubmit(myForm: NgForm) {
     this.us.openSnackBar("Form Submitted!")
     console.log(myForm)
     this.formValues = myForm.value;
     this.wholeForm = myForm;
+  }
+
+  suggestPw() {
+    this.f.form.get("reqUserData").get("userPassword").setValue("abc");
   }
 }
