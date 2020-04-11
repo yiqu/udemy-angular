@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RoutingComponent } from './routing.component';
 import { MageComponent } from './mage/mage.component';
-import { PriestComponent } from './priest/priest.component';
 import { WarComponent } from './warrior/war.component';
 import { AdminComponent } from './admin/admin.component';
 import { LandingComponent } from './landing/landing.component';

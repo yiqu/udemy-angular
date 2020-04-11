@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavItem } from '../shared/models/nav-item.model';
 import { Subject } from 'rxjs';
+import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-f-forms',
@@ -15,15 +17,23 @@ export class FormsComponent implements OnInit {
   activeLink: NavItem;
 
 
-  constructor() {
+  constructor(public router: Router, public route: ActivatedRoute) {
     this.tabLinks.push(
       new NavItem("Template Forms", "template-forms", "creating template driven forms"),
       new NavItem("Reactive Froms", "reactive-forms", "creating reactive forms")
     );
-    this.activeLink = this.tabLinks[0];
+
   }
 
   ngOnInit() {
+    const segs = this.router.url.split("/");
+    const last = segs[segs.length-1];
+    const current: number = this.tabLinks.findIndex((link: NavItem) => {
+      return link.url === last;
+    });
 
+    if (current > -1) {
+      this.activeLink = this.tabLinks[current];
+    }
   }
 }

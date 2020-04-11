@@ -20,12 +20,11 @@ export class TemplateFormsComponent implements OnInit, AfterViewInit {
   wholeForm: NgForm;
 
   userAdminStatus: boolean = true;
-  defaultEmail: string = "Kevin@aol.com"
+  defaultEmail: string = "kevin@aol.com"
 
   genderList: string[] = ["Male", "Female"];
 
   constructor(public us: Utilservice) {
-
   }
 
   ngOnInit() {
@@ -36,13 +35,12 @@ export class TemplateFormsComponent implements OnInit, AfterViewInit {
     this.f.valueChanges.subscribe((val) => {
       this.fValues = val;
       this.formValid = this.f.valid;
-      console.log(this.f.form)
     });
   }
 
   onFormSubmit(myForm: NgForm) {
     this.us.openSnackBar("Form Submitted!")
-    console.log(myForm)
+    console.log("Form: ", this.f);
     this.formValues = myForm.value;
     this.wholeForm = myForm;
   }

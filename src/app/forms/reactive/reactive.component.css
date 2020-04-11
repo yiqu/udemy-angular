@@ -1,0 +1,15 @@
+.full-w {
+  width: 100%;
+}
+
+input.ng-touched.ng-valid {
+}
+
+input.ng-touched.ng-invalid {
+}
+
+.y-c {
+  color: #000;
+  background-color: yellow;
+  font-weight: 800;
+}
