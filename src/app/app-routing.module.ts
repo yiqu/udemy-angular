@@ -8,6 +8,7 @@ import { DirectiveComponent } from './directive/directive.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { DirDeepComponent } from './directives-deep/deep.comp';
 import { ServiceComponent } from './services/service.comp';
+import { PipePracComponent } from './pipes/pipe.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'forms',
     loadChildren: () => import('./forms/forms.module').then(m => m.FormsComponentModule)
   },
+  { path: 'pipes', component: PipePracComponent },
   { path: '**', component: NotFoundComponent }
 ]
 

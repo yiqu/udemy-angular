@@ -29,6 +29,9 @@ import { ActiveComponent } from './services/active/active.component';
 import { InactiveComponent } from './services/inactive/inactive.component';
 import { RoutingComponentModule } from './routing/routing.module';
 import { CapitalizeDirective, MaxCharDirective } from './directives-deep/highlight/cap.dir';
+import { PipePracComponent } from './pipes/pipe.component';
+import { ListItemDisplayPipe, ListItemFilterDisplayPipe } from './pipes/pipes.component';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -55,12 +58,16 @@ import { CapitalizeDirective, MaxCharDirective } from './directives-deep/highlig
     DropDownDirective,
     ServiceComponent,
     InactiveComponent,
-    ActiveComponent
+    ActiveComponent,
+    PipePracComponent,
+    ListItemDisplayPipe,
+    ListItemFilterDisplayPipe
   ],
 
   imports: [
     BrowserModule,
     FormsModule,
+    CommonModule,
     BrowserAnimationsModule,
     MaterialModuleBundle,
     ReactiveFormsModule,
@@ -70,7 +77,7 @@ import { CapitalizeDirective, MaxCharDirective } from './directives-deep/highlig
   ],
 
   providers: [
-
+    DatePipe, // built in pipe needs to be in providers
   ],
 
   bootstrap: [AppComponent]

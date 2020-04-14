@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 10 - Pipes</h5>
+      <hr>
+      <h6>
+        So if a pipe is <strong>pure</strong> we know that it’s output (through transform method) is strictly determined
+        by the input parameters.
+        If the input parameters don’t change the output won’t change.
+      </h6>
+      <h6>
+        This reasoning allows Angular to optimize the pipe and call
+        transform method <strong>only when input parameters change.</strong>
+      </h6>
+      <h6>
+        But if a pipe is <strong>impure</strong> and has internal state the same parameters do not guarantee that same output.
+      </h6>
+      <h6>
+        It means that Angular is forced to
+        trigger transform function on a pipe instance on every digest.
+      </h6>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Build a pipe that filters a list.</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row mb-2">
+    <div class="col-md-12">
+      <h6>Solution:</h6>
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Type here to filter on name or ID" [(ngModel)]="filterValue"
+            (ngModelChange)="onFilterChange()">
+          <div class="btn-group btn-group-sm mt-2" role="group">
+            <button type="button" class="btn btn-primary" (click)="filterShow('DISPLAY')">Only show name</button>
+            <button type="button" class="btn btn-secondary" (click)="filterShow('ID')">Only show ID</button>
+            <button type="button" class="btn btn-info" (click)="filterShow('CREATEDDATE')">Only show date</button>
+            <button type="button" class="btn btn-dark" (click)="filterShow(null)">Reset</button>
+          </div>
+          <div class="mt-1 mb-2 text-muted">
+            Original list item count: {{myList.length}}. This won't change because Pipes does not modify the
+            original list.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li *ngFor="let item of (myList | listItemFilterDisplay:filterValue)" class="list-group-item">
+              {{ item | listItemDisplay:filterShowOption }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-12">
+          <button class="btn btn-sm btn-primary" (click)="onAddItem()">Add another random item</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

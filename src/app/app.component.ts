@@ -21,7 +21,8 @@ export class AppComponent {
       new NavItem("Services", "services", "Service Injection"),
       new NavItem("Routing", "routing", "Routing"),
       new NavItem("Observables", "observables", "Observables"),
-      new NavItem("Forms", "forms", "Angular Forms")
+      new NavItem("Forms", "forms", "Angular Forms"),
+      new NavItem("Pipes", "pipes", "Pipes Creation")
     );
   }
 }
