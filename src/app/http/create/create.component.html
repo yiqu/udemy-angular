@@ -1,0 +1,35 @@
+<form [formGroup]="tweetFg">
+  <div class="row mb-1">
+    <div class="col-md-12">
+      <input class="form-control" placeholder="Name..." formControlName="userName">
+    </div>
+  </div>
+
+  <div class="row mb-1">
+    <div class="col-md-12">
+      <textarea class="form-control" placeholder="Tweet..." formControlName="content"></textarea>
+    </div>
+  </div>
+</form>
+
+<div class="row mb-1">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-primary full" [disabled]="tweetFg.invalid"> Tweet it! </button>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-secondary full"> Reset </button>
+      </div>
+    </div>
+    <div class="row mt-1">
+      <div class="col-md-12">
+        <div *ngIf="tweetFg.invalid && tweetFg.touched" class="alert alert-warning" role="alert">
+          Invalid input!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

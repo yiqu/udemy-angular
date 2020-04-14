@@ -22,7 +22,8 @@ export class AppComponent {
       new NavItem("Routing", "routing", "Routing"),
       new NavItem("Observables", "observables", "Observables"),
       new NavItem("Forms", "forms", "Angular Forms"),
-      new NavItem("Pipes", "pipes", "Pipes Creation")
+      new NavItem("Pipes", "pipes", "Pipes Creation"),
+      new NavItem("HTTP", "http", "HTTP Requests")
     );
   }
 }

@@ -32,6 +32,10 @@ import { CapitalizeDirective, MaxCharDirective } from './directives-deep/highlig
 import { PipePracComponent } from './pipes/pipe.component';
 import { ListItemDisplayPipe, ListItemFilterDisplayPipe } from './pipes/pipes.component';
 import { CommonModule, DatePipe } from '@angular/common';
+import { HttpPracComponent } from './http/http.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CreateComponent } from './http/create/create.component';
+import { DisplayComponent } from './http/display/display.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,10 @@ import { CommonModule, DatePipe } from '@angular/common';
     ActiveComponent,
     PipePracComponent,
     ListItemDisplayPipe,
-    ListItemFilterDisplayPipe
+    ListItemFilterDisplayPipe,
+    HttpPracComponent,
+    DisplayComponent,
+    CreateComponent
   ],
 
   imports: [
@@ -73,6 +80,7 @@ import { CommonModule, DatePipe } from '@angular/common';
     ReactiveFormsModule,
     RouterModule,
     RoutingComponentModule,
+    HttpClientModule,
     AppRoutingModule
   ],
 
