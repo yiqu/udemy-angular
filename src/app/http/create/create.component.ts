@@ -50,6 +50,12 @@ export class CreateComponent implements OnInit {
     }
   }
 
+  onSubmit2() {
+    const newTweet = new Tweet(this.tweetFg.get('userName').value, this.tweetFg.get('content').value,
+      new Date().getTime());
+    this.hs.postData2(newTweet);
+  }
+
   onReset() {
     this.tweetFg.reset();
   }

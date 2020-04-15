@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModuleBundle } from './shared/material-bundle.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -75,6 +77,7 @@ import { DateDisplayPipe } from './http/pipes.component';
 
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
     CommonModule,
     BrowserAnimationsModule,
