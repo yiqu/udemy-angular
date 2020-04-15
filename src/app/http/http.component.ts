@@ -18,7 +18,8 @@ export class HttpPracComponent implements OnInit {
 }
 
 export class Tweet {
-  constructor(public userName: string, public content: string) {
+  constructor(public userName: string, public content: string, public date: number = 0,
+    public id?: string) {
 
   }
 }

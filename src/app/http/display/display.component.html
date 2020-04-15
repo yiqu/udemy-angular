@@ -1,7 +1,30 @@
 <div class="row">
   <div class="col-md-12">
-    <h6 class="text-center">
+    <h6 class="text-center t-h">
       Tweets
+      <span class="refr" (click)="refreshTweet()">Refresh</span>
     </h6>
+    <hr>
+    <ng-container *ngIf="allTweets.length > 0; else noTweets">
+      <div class="list-group">
+        <div *ngFor="let tweet of allTweets" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{tweet.userName}}<span class="text-muted">@{{tweet.userName}}</span>:</h5>
+            <small>{{tweet.date | dateDisplay}}</small>
+          </div>
+          <p class="mb-1">{{tweet.content}}</p>
+          <small>{{tweet.date | date:'medium'}}</small>
+          <div>
+            <small>Firebase id for this tweet: {{tweet.id}}</small>
+          </div>
+
+        </div>
+      </div>
+    </ng-container >
+    <ng-template #noTweets>
+      <span class="t-h">
+        No tweets were found!
+      </span>
+    </ng-template>
   </div>
 </div>

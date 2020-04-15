@@ -36,6 +36,7 @@ import { HttpPracComponent } from './http/http.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './http/create/create.component';
 import { DisplayComponent } from './http/display/display.component';
+import { DateDisplayPipe } from './http/pipes.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { DisplayComponent } from './http/display/display.component';
     ListItemFilterDisplayPipe,
     HttpPracComponent,
     DisplayComponent,
-    CreateComponent
+    CreateComponent,
+    DateDisplayPipe
   ],
 
   imports: [

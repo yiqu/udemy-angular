@@ -1,0 +1,14 @@
+.t-h {
+  font-weight: 800;
+  font-family: 'Inria Sans';
+}
+
+.refr {
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 300;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
