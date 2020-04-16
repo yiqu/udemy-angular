@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { IsLoadingService } from './loading.service';
 
 @Component({
   selector: 'app-h-http',
@@ -6,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./http.component.css']
 })
 
-export class HttpPracComponent implements OnInit {
+export class HttpPracComponent implements OnInit, AfterViewInit {
 
-  constructor() {
+  showLoading: boolean = true;
 
+  constructor(public ils: IsLoadingService) {
   }
 
   ngOnInit() {
 
+  }
+
+  ngAfterViewInit() {
   }
 }
 

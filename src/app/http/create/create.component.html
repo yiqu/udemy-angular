@@ -23,7 +23,7 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-6">
-            <button class="btn btn-primary full" [disabled]="tweetFg.invalid" (click)="onSubmit()">
+            <button class="btn btn-primary full" [disabled]="tweetFg.invalid || loading" (click)="onSubmit()">
               {{editMode ? 'Update tweet' : 'Tweet it!'}}
             </button>
           </div>

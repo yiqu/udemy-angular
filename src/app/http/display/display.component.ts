@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Tweet } from '../http.component';
 import { HttpPracService } from '../http.service';
-import { map, takeUntil, switchMap } from 'rxjs/operators';
+import { map, takeUntil, switchMap, catchError } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, EMPTY, throwError, of } from 'rxjs';
 import { Utilservice } from 'src/app/shared/util.service';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { DialogEditComponent } from '../dialog/dialog.component';
@@ -19,6 +19,7 @@ export class DisplayComponent implements OnInit, OnDestroy {
   allTweets: Tweet[] = [];
   compDestory$: Subject<any> = new Subject<any>();
   dialogRef: MatDialogRef<DialogEditComponent>;
+  loading: boolean;
 
   constructor(public hs: HttpPracService, public us: Utilservice, public dialog: MatDialog) {
     this.hs.refreshClick$.pipe(
@@ -28,9 +29,15 @@ export class DisplayComponent implements OnInit, OnDestroy {
       })
     ).subscribe(
       (val: Tweet[]) => {
-        this.allTweets = [...val];
+        if (val) {
+          this.loading = false;
+          this.allTweets = [...val];
+        }
+      },
+      (err) => {
+        console.log("err loading", err)
       }
-    )
+    );
 
   }
 
@@ -42,7 +49,12 @@ export class DisplayComponent implements OnInit, OnDestroy {
    * transform Forebase object to list, then sort it by Date of latest
    */
   getAllTweets(): Observable<Tweet[]> {
-    return this.hs.getData<{[k: string]: Tweet}>().pipe(
+    const someParams = {
+      print: "pretty",
+      another: "param"
+    }
+    this.loading = true;
+    return this.hs.getData<{[k: string]: Tweet}>(someParams).pipe(
       map((val) => {
         const res = val.body;
 

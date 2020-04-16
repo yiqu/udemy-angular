@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { HttpPracService } from '../http.service';
 import { Utilservice } from 'src/app/shared/util.service';
 import { Tweet } from '../http.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-h-c',
@@ -22,6 +23,7 @@ export class CreateComponent implements OnInit {
   editDone: EventEmitter<any> = new EventEmitter<any>();
 
   tweetFg: FormGroup;
+  loading: boolean = false;
 
   constructor(public fb: FormBuilder, public hs: HttpPracService, private us: Utilservice) {
 
@@ -48,6 +50,7 @@ export class CreateComponent implements OnInit {
 
   onSubmit() {
     if (this.tweetFg.valid) {
+      this.loading = true;
       const idOfTweet = this.tweetData ? this.tweetData.id : null;
       const newTweet = new Tweet(this.tweetFg.get('userName').value, this.tweetFg.get('content').value,
         new Date().getTime(), idOfTweet);
@@ -59,9 +62,10 @@ export class CreateComponent implements OnInit {
             this.us.openSnackBar("Successfully updated your tweet! " + bod.id);
           },
           (err) => {
-
+            this.loading = false;
           },
           () => {
+            this.loading = false;
             this.hs.refreshClick$.next();
             this.editDone.emit(true);
           }
@@ -72,15 +76,16 @@ export class CreateComponent implements OnInit {
             const bod = val.body;
             this.us.openSnackBar("Successfully posted your tweet! " + bod.name);
           },
-          (err) => {
+          (err: HttpErrorResponse) => {
+            this.loading = false;
           },
           () => {
+            this.loading = false;
             this.hs.refreshClick$.next();
             this.tweetFg.reset();
           }
         );
       }
-
     }
   }
 

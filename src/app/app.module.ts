@@ -35,11 +35,13 @@ import { PipePracComponent } from './pipes/pipe.component';
 import { ListItemDisplayPipe, ListItemFilterDisplayPipe } from './pipes/pipes.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpPracComponent } from './http/http.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CreateComponent } from './http/create/create.component';
 import { DisplayComponent } from './http/display/display.component';
 import { DateDisplayPipe } from './http/pipes.component';
 import { DialogEditComponent } from './http/dialog/dialog.component';
+import { CheckForLoadingInterceptor } from './http/loading-interceptor.service';
+import { IsLoadingService } from './http/loading.service';
 
 @NgModule({
   declarations: [
@@ -93,6 +95,12 @@ import { DialogEditComponent } from './http/dialog/dialog.component';
 
   providers: [
     DatePipe, // built in pipe needs to be in providers
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CheckForLoadingInterceptor,
+      multi: true,
+      deps: [IsLoadingService]
+    }
   ],
 
   bootstrap: [AppComponent]
