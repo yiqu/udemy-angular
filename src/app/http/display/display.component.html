@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <h6 class="text-center t-h">
-      Tweets
+      Tweets ( {{allTweets.length}} )
       <span class="refr" (click)="refreshTweet()">Refresh</span>
     </h6>
     <hr>
@@ -17,7 +17,10 @@
           <div>
             <small>Firebase id for this tweet: {{tweet.id}}</small>
           </div>
-
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary btn-sm" (click)="onEdit(tweet)">Edit</button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(tweet)">Delete</button>
+          </div>
         </div>
       </div>
     </ng-container >

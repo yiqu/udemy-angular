@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col-md-12">
-    <h6 class="text-center t-h">
+    <h6 class="text-center t-h" *ngIf="!editMode">
       Compose
     </h6>
+    <small *ngIf="editMode">{{tweetData.id}}</small>
     <hr>
     <form [formGroup]="tweetFg">
       <div class="row mb-1">
@@ -13,7 +14,7 @@
 
       <div class="row mb-1">
         <div class="col-md-12">
-          <textarea class="form-control" placeholder="Tweet..." formControlName="content"></textarea>
+          <textarea cdkFocusInitial class="form-control" placeholder="Tweet..." formControlName="content"></textarea>
         </div>
       </div>
     </form>
@@ -22,7 +23,9 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-6">
-            <button class="btn btn-primary full" [disabled]="tweetFg.invalid" (click)="onSubmit()"> Tweet it! </button>
+            <button class="btn btn-primary full" [disabled]="tweetFg.invalid" (click)="onSubmit()">
+              {{editMode ? 'Update tweet' : 'Tweet it!'}}
+            </button>
           </div>
           <div class="col-md-6">
             <button class="btn btn-secondary full" (click)="onReset()"> Reset </button>

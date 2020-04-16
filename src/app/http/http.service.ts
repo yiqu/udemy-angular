@@ -39,9 +39,19 @@ export class HttpPracService {
     return this.http.post<T>(this.baseUrl + urlPost, data, {observe: 'response'});
   }
 
+  updateData<T>(data: Tweet): Observable<HttpResponse<T>> {
+    const urlPut: string = "tweets/" + data.id + ".json";
+    return this.http.put<T>(this.baseUrl + urlPut, data, {observe: 'response'});
+  }
+
   getData<T>(): Observable<HttpResponse<T>> {
     const urlGet: string = "tweets.json";
     return this.http.get<T>(this.baseUrl + urlGet, {observe: 'response'});
+  }
+
+  deleteData(tweetId: string) {
+    const deleteUrl: string = "tweets/" + tweetId + ".json";
+    return this.http.delete(this.baseUrl + deleteUrl, {observe: 'response'});
   }
 
   updateData2(t: Tweet) {
