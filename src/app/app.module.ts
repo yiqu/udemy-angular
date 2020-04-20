@@ -13,7 +13,7 @@ import { NotFoundComponent } from './not-found/404.component';
 import { CompComponent } from './p1/comp.component';
 import { WarningComponent } from './p1/warning/warning.component';
 import { SuccessComponent } from './p1/success/success.component';
-import { DataBindingComponent } from './data-binding/data-binding.component';
+import { DataBindingComponent } from './2-data-binding/data-binding.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { EvenComponent } from './event-binding/even/even.comp';

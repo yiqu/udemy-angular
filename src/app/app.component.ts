@@ -23,7 +23,8 @@ export class AppComponent {
       new NavItem("Observables", "observables", "Observables"),
       new NavItem("Forms", "forms", "Angular Forms"),
       new NavItem("Pipes", "pipes", "Pipes Creation"),
-      new NavItem("HTTP", "http", "HTTP Requests")
+      new NavItem("HTTP", "http", "HTTP Requests"),
+      new NavItem("Dynamic Loader", "dynamic", "Dynamically Load Components")
     );
   }
 }
