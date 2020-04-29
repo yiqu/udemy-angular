@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 13 - Angular Animation</h5>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Add animation when a new item is appended to the list.</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <h6>Solution</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <button mat-stroked-button (click)="onitemAdd()" class="mr-1">Add new item</button>
+      <button mat-stroked-button (click)="onAnimate('normal')">Animate back to Normal</button>
+      <div class="mt-2">
+        <button mat-stroked-button (click)="onAnimate('right')">Animate to right and yellow</button>
+        <button mat-stroked-button (click)="onAnimate('right-1')">Animate to more right and green</button>
+      </div>
+
+      <mat-list>
+        <mat-list-item [@listItemState]="listItemState" *ngFor="let item of myList">
+          <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+          <div mat-line>{{item.display}}</div>
+        </mat-list-item>
+      </mat-list>
+
+    </div>
+  </div>
+</div>
+
+
+
