@@ -17,7 +17,9 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-
+      <div class="mb-5">
+        Fade effect is from 3rd party library: <a href="https://github.com/filipows/angular-animations">link</a>.
+      </div>
       <button mat-stroked-button (click)="onitemAdd()" class="mr-1">Add new item</button>
       <button mat-stroked-button (click)="onAnimate('normal')">Animate back to Normal</button>
       <div class="mt-2">
@@ -26,14 +28,67 @@
       </div>
 
       <mat-list>
-        <mat-list-item [@listItemState]="listItemState" *ngFor="let item of myList">
+        <mat-list-item [@listItemState]="listItemState" *ngFor="let item of myList; index as i"
+          [@fadeInOnEnter] [@fadeOutOnLeave]>
           <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
           <div mat-line>{{item.display}}</div>
+          <button class="btn btn-sm btn-primary" (click)="removeMe(i)">remove me</button>
         </mat-list-item>
       </mat-list>
 
     </div>
   </div>
+
+  <div class="row mt-3">
+    <div class="col-8">
+      <div class="mb-3">
+        Using 3rd party library
+        <button mat-stroked-button (click)="onRubber()">Rubber band trigger</button>
+      </div>
+      <div [@rubberBand]="rubberState" style="background-color: burlywood;">
+        Hello im a rubber band
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-8">
+      <div>
+        Cool Texts animation:
+        <a href="https://github.com/filipows/angular-animations/tree/21480932255ce3d53130b16798868f06fbb42427/demo-app/src/app/experiments">
+        link</a>
+        <button class="btn btn-sm btn-primary" (click)="reStartcool()">Restart</button>
+      </div>
+      <div >
+        <div>
+          <div class="letter" *ngFor="let letter of coolTxts; let i = index; let last = last"
+            [@enterLetterAnim1]="{value: '', params: { delay: 0 + i * 100} }"
+            [@letterAnim1]="{value: animationState, params: { delay: i * 30} }"
+            [@hueLetter]="{value: hueState, params: {delay: i * 50}}"
+            (@letterAnim1.done)="last && hueState = !hueState">
+              {{letter}}
+          </div>
+        </div>
+
+        <div>
+          <div class="letter" *ngFor="let letter of coolTxts; let i = index; let last = last"
+            [@enterLetterAnim2]="{value: '', params: { delay: 6000 + getDelay(i, coolTxts.length) } }"
+            [@letterAnim2]="{value: animationState, params: { delay: 500 + i * 30} }"
+            [@hueLetter]="{value: hueState, params: {delay: i * 75}}"
+            (@enterLetterAnim2.done)="last && hueState = !hueState">
+              {{letter}}</div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
 </div>
 
 

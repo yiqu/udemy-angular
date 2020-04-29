@@ -1,0 +1,6 @@
+.letter {
+  font-size: 1em;
+  display: inline-block;
+  min-width: 0.2em;
+  color: #df4a32;
+}
