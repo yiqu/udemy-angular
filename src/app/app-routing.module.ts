@@ -10,6 +10,7 @@ import { DirDeepComponent } from './directives-deep/deep.comp';
 import { ServiceComponent } from './services/service.comp';
 import { PipePracComponent } from './pipes/pipe.component';
 import { HttpPracComponent } from './http/http.component';
+import { AnimationPracComponent } from './animation/animation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,6 +29,7 @@ const routes: Routes = [
   },
   { path: 'pipes', component: PipePracComponent },
   { path: 'http', component: HttpPracComponent },
+  { path: 'animate', component: AnimationPracComponent },
   { path: '**', component: NotFoundComponent }
 ]
 
