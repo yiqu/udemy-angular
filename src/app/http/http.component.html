@@ -5,7 +5,30 @@
       <hr>
       <h6>Requirments:</h6>
       <ol>
-        <li>Send CRUD in Angular.</li>
+        <li>Send CRUD request in Angular.</li>
+        <li>Use HttpClient to make GET, POST, PUT, and DELETE requests.</li>
+        <li>Sending a request with Angular can be done with extra options:
+          <ul>
+            <li>
+              headers?: HttpHeaders
+            </li>
+            <li>
+              observe: 'response | body | etc..';
+            </li>
+            <li>
+              params?: HttpParams
+            </li>
+            <li>
+              reportProgress?: boolean;
+            </li>
+            <li>
+              responseType?: 'json | text | etc..';
+            </li>
+            <li>
+              withCredentials?: boolean;
+            </li>
+          </ul>
+        </li>
       </ol>
     </div>
   </div>
@@ -13,6 +36,7 @@
   <div class="row mb-3">
     <div class="col-md-6">
       <app-h-c></app-h-c>
+      <mat-spinner *ngIf="ils.isLoading" [diameter]="40"></mat-spinner>
     </div>
     <div class="col-md-6">
       <app-h-d></app-h-d>

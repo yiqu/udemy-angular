@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Edit Tweet</h1>
+<div mat-dialog-content>
+  <app-h-c [editMode]="true" [tweetData]="data" (editDone)="onEditCompleted($event)"></app-h-c>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()" >Cancel</button>
+</div>

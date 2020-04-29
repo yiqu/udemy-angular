@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { NotFoundComponent } from './not-found/404.component';
 import { CompComponent } from './p1/comp.component';
-import { DataBindingComponent } from './data-binding/data-binding.component';
+import { DataBindingComponent } from './2-data-binding/data-binding.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { DirDeepComponent } from './directives-deep/deep.comp';
@@ -26,6 +26,9 @@ const routes: Routes = [
   },
   { path: 'forms',
     loadChildren: () => import('./forms/forms.module').then(m => m.FormsComponentModule)
+  },
+  { path: 'dynamic',
+    loadChildren: () => import('./dynamic-component/dynamic.module').then(m => m.DynamicComponentModule)
   },
   { path: 'pipes', component: PipePracComponent },
   { path: 'http', component: HttpPracComponent },

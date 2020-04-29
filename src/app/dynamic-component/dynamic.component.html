@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 11 - Dynamic Component Loader</h5>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Add a component upon buttonc click via Dynamic Component Loader</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <h6>Solution</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div>
+        <button class="btn btn-primary btn-block" (click)="addNewUser()"> Add a new component dynamically </button>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <!-- <div>
+        <app-new-user-dynamic [data]="aUser"></app-new-user-dynamic>
+      </div> -->
+      <div>
+        <ng-template userPlaceHolder></ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+

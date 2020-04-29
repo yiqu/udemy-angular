@@ -13,7 +13,7 @@ import { NotFoundComponent } from './not-found/404.component';
 import { CompComponent } from './p1/comp.component';
 import { WarningComponent } from './p1/warning/warning.component';
 import { SuccessComponent } from './p1/success/success.component';
-import { DataBindingComponent } from './data-binding/data-binding.component';
+import { DataBindingComponent } from './2-data-binding/data-binding.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { EvenComponent } from './event-binding/even/even.comp';
@@ -35,11 +35,14 @@ import { PipePracComponent } from './pipes/pipe.component';
 import { ListItemDisplayPipe, ListItemFilterDisplayPipe } from './pipes/pipes.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpPracComponent } from './http/http.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CreateComponent } from './http/create/create.component';
 import { DisplayComponent } from './http/display/display.component';
 import { DateDisplayPipe } from './http/pipes.component';
 import { AnimationPracComponent } from './animation/animation.component';
+import { DialogEditComponent } from './http/dialog/dialog.component';
+import { CheckForLoadingInterceptor } from './http/loading-interceptor.service';
+import { IsLoadingService } from './http/loading.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,8 @@ import { AnimationPracComponent } from './animation/animation.component';
     DisplayComponent,
     CreateComponent,
     DateDisplayPipe,
-    AnimationPracComponent
+    AnimationPracComponent,
+    DialogEditComponent
   ],
 
   imports: [
@@ -93,6 +97,12 @@ import { AnimationPracComponent } from './animation/animation.component';
 
   providers: [
     DatePipe, // built in pipe needs to be in providers
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CheckForLoadingInterceptor,
+      multi: true,
+      deps: [IsLoadingService]
+    }
   ],
 
   bootstrap: [AppComponent]

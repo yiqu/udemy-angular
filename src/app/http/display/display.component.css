@@ -9,6 +9,6 @@
   font-weight: 300;
 }
 
-.list-group-item {
-  cursor: pointer;
+.btn-group .btn {
+  width: 150px;
 }
