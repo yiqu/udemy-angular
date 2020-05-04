@@ -25,7 +25,8 @@ export class AppComponent {
       new NavItem("Pipes", "pipes", "Pipes Creation"),
       new NavItem("HTTP", "http", "HTTP Requests"),
       new NavItem("Animation", "animate", "Angular Animation"),
-      new NavItem("Dynamic Loader", "dynamic", "Dynamically Load Components")
+      new NavItem("Dynamic Loader", "dynamic", "Dynamically Load Components"),
+      new NavItem("Authentication", "auth", "Add auth. to the app.")
     );
   }
 }

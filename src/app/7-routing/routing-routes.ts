@@ -50,9 +50,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
+    RouterModule.forChild(
       routes,
-      { enableTracing: false } // <-- debugging purposes only
     )
   ],
   exports: [

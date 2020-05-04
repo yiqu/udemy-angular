@@ -11,6 +11,7 @@ import { PipePracComponent } from './10-pipes/pipe.component';
 import { HttpPracComponent } from './11-http/http.component';
 import { AnimationPracComponent } from './13-animation/animation.component';
 import { CompComponent } from './1-components/comp.component';
+import { AuthComponent } from './14-auth/auth.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

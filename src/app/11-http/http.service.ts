@@ -86,4 +86,6 @@ export class HttpPracService {
     this.tweetList.push(data);
   }
 
+
+
 }

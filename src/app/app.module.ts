@@ -43,6 +43,7 @@ import { IsLoadingService } from './11-http/loading.service';
 import { CompComponent } from './1-components/comp.component';
 import { SuccessComponent } from './1-components/success/success.component';
 import { WarningComponent } from './1-components/warning/warning.component';
+import { AuthModule } from './14-auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { WarningComponent } from './1-components/warning/warning.component';
     RouterModule,
     RoutingComponentModule,
     HttpClientModule,
+    AuthModule,
     AppRoutingModule
   ],
 
