@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div *ngIf="(this.as.user$ | async) as user;">
+      <div class="alert alert-success mb-3">
+        Welcome!
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          Current logged in: {{user.email}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          Token: ...{{user.token.slice(user.token.length - 15)}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          Local ID: {{user.localId}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

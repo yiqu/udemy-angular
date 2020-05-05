@@ -5,3 +5,11 @@ input.ng-invalid.ng-touched {
 input.ng-valid.ng-touched {
   border: 2px solid green;
 }
+
+form {
+  font-size: 11px;
+}
+
+.active {
+  background-color: mediumblue;
+}

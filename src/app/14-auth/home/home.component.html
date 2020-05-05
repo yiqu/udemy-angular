@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="alert alert-info" *ngIf="!(this.as.user$ | async) as user">
+      You can only view the tweets. Log in to enable composing tweets.
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <app-h-c [tweetData]="tweetData"></app-h-c>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    Tweet Wall:
+    <div class="mt-3">
+      <ng-container *ngIf="listofTweets; else loading">
+        <ng-container *ngIf="listofTweets.length > 0; else noTweets">
+          <div class="list-group">
+            <div *ngFor="let tweet of listofTweets" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{tweet.userName}}<span class="text-muted">@{{tweet.userName}}</span>:</h5>
+                <small>{{tweet.date | date}}</small>
+              </div>
+              <p class="mb-1">{{tweet.content}}</p>
+              <small>{{tweet.date | date:'medium'}}</small>
+              <div>
+                <small>Firebase id for this tweet: {{tweet.id}}</small>
+              </div>
+              <!-- <div class="btn-group" role="group">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="onEdit(tweet)">Edit</button>
+                <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(tweet)">Delete</button>
+              </div> -->
+            </div>
+          </div>
+        </ng-container >
+      </ng-container>
+
+      <ng-template #noTweets>
+        <span class="t-h">
+          No tweets were found!
+        </span>
+      </ng-template>
+      <ng-template #loading>
+        <span class="t-h">
+          <div>Loading...</div>
+          <mat-spinner [diameter]="40"></mat-spinner>
+        </span>
+      </ng-template>
+    </div>
+  </div>
+</div>
