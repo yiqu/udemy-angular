@@ -31,7 +31,7 @@ export class FireUser {
     public refreshToken: string,
     public registered: boolean,
     private _token: string,
-    private _tokenExpireDate: Date) {
+    public _tokenExpireDate: Date) {
 
     }
 

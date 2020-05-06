@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, Router, ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { FireUser } from './auth.model';
 
@@ -12,15 +12,16 @@ export class AdminFireGuard implements CanActivate {
   constructor(public as: AuthService, public router: Router, public route: ActivatedRoute) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean> | boolean | UrlTree {
 
-    return this.as.user$.pipe(
+    return this.as.user$
+    .pipe(
+      take(1),
       map((val: FireUser) => {
         if (val && val.token) {
           return true;
         }
-        this.router.navigate(['/', 'auth','nolog']);
-        return false;
+        return this.router.createUrlTree(['/', 'auth','nolog']);
       })
     )
   }

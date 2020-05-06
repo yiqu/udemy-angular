@@ -27,11 +27,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.listofTweets = [...t];
     });
 
-    this.as.user$.subscribe((val: FireUser) => {
+    this.as.user$.pipe(
+      takeUntil(this.compDest$)
+    )
+    .subscribe((val: FireUser) => {
       if (val && val.email) {
         this.tweetData = new Tweet(val.email, null);
       }
-      console.log(this.tweetData)
     })
   }
 

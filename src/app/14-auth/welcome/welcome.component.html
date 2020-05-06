@@ -11,7 +11,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          Token: ...{{user.token.slice(user.token.length - 15)}}
+          Token: ...{{user.token ? (user.token.slice(user.token.length - 15)):'none'}}
         </div>
       </div>
       <div class="row">
@@ -19,7 +19,11 @@
           Local ID: {{user.localId}}
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-sm-12">
+          {{msg}}
+        </div>
+      </div>
     </div>
   </div>
 </div>

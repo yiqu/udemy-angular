@@ -32,6 +32,11 @@ export class AuthService {
 
   handleError(err: HttpErrorResponse) {
     this.us.openSnackBar("Error! " + err.message);
+    const errMsg: any = err.error.error;
+    console.log(err.error.error)
+    if ((typeof errMsg === "string") && errMsg.includes("not parse auth")) {
+      this.user$.next(null);
+    }
     return throwError(err);
   }
 
@@ -98,6 +103,7 @@ export class AuthService {
   }
 
   handleFirebaseSignInUpError(errResponse) {
+    console.log(errResponse)
     let errMessage: string = "An server error has occured.";
     if (!errResponse.error || !errResponse.error.error) {
       return throwError(errMessage);
@@ -136,7 +142,8 @@ export class AuthService {
 
   handleAuthentication<T>(u: HttpResponse<T>) {
     const info = u.body;
-    const expireDateInSeconds: number = (new Date().getTime()) + ((+info['expiresIn']) * 1000);
+    const expiresInSeconds: number = (+info['expiresIn']);
+    const expireDateInSeconds: number = (new Date().getTime()) + ((expiresInSeconds) * 1000);
     const expireDate: Date = new Date(expireDateInSeconds);
 
     const newUser = new FireUser(
@@ -149,6 +156,7 @@ export class AuthService {
       expireDate);
 
     this.user$.next(newUser);
+    this.saveInfoToLocalStorage(newUser);
   }
 
   getTweets(): Observable<Tweet[]> {
@@ -169,8 +177,28 @@ export class AuthService {
   }
 
   onLogout() {
+    localStorage.removeItem("fire-user");
     this.user$.next(null);
     this.router.navigate(['./', 'auth']);
   }
+
+  tryAutoLogin() {
+    const localStorageUser: any = JSON.parse(localStorage.getItem("fire-user"));
+    if (!localStorageUser) {
+      return;
+    }
+    const reg = localStorageUser['registered'];
+    const expireDate: Date = new Date(localStorageUser._tokenExpireDate);
+    const u: FireUser = new FireUser(localStorageUser.displayName, localStorageUser.email, localStorageUser.localId,
+      localStorageUser.refreshToken, reg, localStorageUser._token, expireDate);
+    if (u.token) {
+      this.user$.next(u);
+    }
+  }
+
+  saveInfoToLocalStorage(u: FireUser) {
+    localStorage.setItem("fire-user", JSON.stringify(u));
+  }
+
 
 }

@@ -17,13 +17,15 @@ export class AuthKeyInterceptor implements HttpInterceptor {
     return this.as.user$.pipe(
       take(1),
       exhaustMap((u: FireUser) => {
-        if (!u) {
+        if (!u || req.method === "GET") {
           return next.handle(req);
         } else {
           const token = u.token ? u.token : null;
 
           let headers = new HttpHeaders();
-          headers = headers.append("auth", token);
+          if (token) {
+            headers = headers.append("auth", token);
+          }
           headers = headers.append("another", "example");
 
           let params: HttpParams = new HttpParams();

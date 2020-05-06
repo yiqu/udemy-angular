@@ -24,7 +24,7 @@ export class AuthComponent implements OnInit {
   constructor(public fb: FormBuilder, public as: AuthService, public us: Utilservice,
     public router: Router) {
     this.infoFg = this.fb.group({
-      id: new FormControl("kevinqu88@gmail.com", [Validators.required, Validators.email]),
+      id: new FormControl("test@test.com", [Validators.required, Validators.email]),
       pw: new FormControl("123456", [Validators.required])
     });
 
@@ -42,7 +42,7 @@ export class AuthComponent implements OnInit {
     this.signInUpErrMessage = null;
     this.isLoginMode = !this.isLoginMode;
     this.infoFg.reset({
-      id: "kevinqu88@gmail.com",
+      id: "test@test.com",
       pw: "123456"
     });
   }
@@ -71,7 +71,6 @@ export class AuthComponent implements OnInit {
   }
 
   signUpInNext(val: HttpResponse<FirebaseSignInResponse> | HttpResponse<FirebaseSignUpResponse>) {
-    console.log(val)
   }
 
   signUpInError(err) {
