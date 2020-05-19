@@ -27,7 +27,8 @@ export class AppComponent implements OnInit {
       new NavItem("HTTP", "http", "HTTP Requests"),
       new NavItem("Animation", "animate", "Angular Animation"),
       new NavItem("Dynamic Loader", "dynamic", "Dynamically Load Components"),
-      new NavItem("Authentication", "auth", "Add auth. to the app.")
+      new NavItem("Authentication", "auth", "Add auth. to the app."),
+      new NavItem("NgRx", "ngrx", "NgRx Practice")
     );
   }
 

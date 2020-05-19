@@ -34,6 +34,9 @@ const routes: Routes = [
   { path: 'pipes', component: PipePracComponent },
   { path: 'http', component: HttpPracComponent },
   { path: 'animate', component: AnimationPracComponent },
+  { path: 'ngrx',
+    loadChildren: () => import('./15-ngrx/ngrx.module').then(m => m.NgrxModule)
+  },
   { path: '**', component: NotFoundComponent }
 ]
 

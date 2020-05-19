@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 15 - NgRx</h5>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Create Actions, Reducers to manager users tweets.</li>
+      </ol>
+    </div>
+  </div>
+<hr>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <div class="mb-2">
+        User's Posted Tweets:
+      </div>
+      <div class="list-group">
+        <div *ngFor="let tweet of userPostedTweets; index as i" class="list-group-item list-group-item-action mb-1">
+          <div >
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{tweet.userName}}<span class="text-muted">@{{tweet.userName}}</span>:</h5>
+              <small>{{tweet.date | date}}</small>
+            </div>
+
+            <p *ngIf="!tweet.editing" class="mb-1">{{tweet.content}}</p>
+
+            <div *ngIf="tweet.editing">
+              <app-ngrx-t-editor [twee]="tweet" (onTSave)="this.onTweetSave($event)"></app-ngrx-t-editor>
+            </div>
+
+            <small>{{tweet.date | date:'medium'}}</small>
+            <div>
+              <small>ID for this tweet: {{tweet.id}}</small>
+            </div>
+            <div>
+              <small>Status: {{tweet.sendStatus}}</small>
+            </div>
+            <div>
+              <button class="btn btn-info btn-sm" (click)="onTweetEdit(tweet)" *ngIf="!tweet.editing">
+                Edit
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="onTweetDelete(tweet)">Delete</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="mb-2">
+        Post a new tweet:
+      </div>
+      <div>
+        <input class="form-control" placeholder="Name" [(ngModel)]="userName">
+        <input class="form-control" placeholder="Your tweet" [(ngModel)]="userTweet">
+      </div>
+      <div class="mt-1">
+        <button class="btn btn-primary btn-sm" (click)="onTweetSubmit()">Post it!</button>
+      </div>
+    </div>
+  </div>
+</div>
