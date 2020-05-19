@@ -109,6 +109,12 @@ Apache-2.0
 @firebase/util
 Apache-2.0
 
+@ngrx/store
+MIT
+
+@ngrx/store-devtools
+MIT
+
 angular-animations
 MIT
 MIT License
