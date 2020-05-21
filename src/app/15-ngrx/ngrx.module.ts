@@ -10,16 +10,13 @@ import { StoreModule } from '@ngrx/store';
 import { NgRxComponentService } from './comp.service';
 import { TweetEditorComponent } from './tweet-editor/editor.component';
 import { appReducers } from './global-store/app.reducer';
+import { NgrxLandingComponent } from './landing/landing.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MaterialModuleBundle,
-    //StoreModule.forRoot(appReducers),
-    // environment.production ? [] : StoreDevtoolsModule.instrument({
-    //   maxAge: 20
-    // }),
     NgrxRoutingModule
   ],
 
@@ -29,7 +26,8 @@ import { appReducers } from './global-store/app.reducer';
 
   declarations: [
     NgrxComponent,
-    TweetEditorComponent
+    TweetEditorComponent,
+    NgrxLandingComponent
   ],
 
   providers: [

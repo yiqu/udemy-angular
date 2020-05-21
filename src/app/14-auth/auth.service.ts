@@ -155,6 +155,43 @@ export class AuthService {
     return throwError(errMessage);
   }
 
+  handleErrorNgrx(errResponse: HttpErrorResponse): string {
+    let errMessage: string = "An server error has occured.";
+    if (!errResponse.error || !errResponse.error.error) {
+      return (errMessage);
+    }
+    switch (errResponse.error.error.message) {
+      case "EMAIL_EXISTS": {
+        errMessage = "This email has already been registered.";
+        break;
+      }
+      case "TOO_MANY_ATTEMPTS_TRY_LATER": {
+        errMessage = "Too many failed login attempts, try again later.";
+        break;
+      }
+      case "WEAK_PASSWORD": {
+        errMessage = "Password should be at least 6 characters";
+        break;
+      }
+      case "EMAIL_NOT_FOUND": {
+        errMessage = "The account you are trying to sign in with does not exist.";
+        break;
+      }
+      case "INVALID_PASSWORD": {
+        errMessage = "Invalid password.";
+        break;
+      }
+      case "USER_DISABLED": {
+        errMessage = "This user has been disabled";
+        break;
+      }
+      default: {
+        errMessage = errResponse.error.error.message;
+      }
+    }
+    return (errMessage);
+  }
+
   handleAuthentication<T>(u: HttpResponse<T>) {
     const info = u.body;
     const expiresInSeconds: number = (+info['expiresIn']);
@@ -245,6 +282,7 @@ export class AuthService {
     const u: FireUser = new FireUser(localStorageUser.displayName, localStorageUser.email, localStorageUser.localId,
       localStorageUser.refreshToken, reg, localStorageUser._token, expireDate);
     if (u.token) {
+      console.log("auto logging in now...")
       this.store.dispatch(new fromAuthActions.Login(u));
     }
   }

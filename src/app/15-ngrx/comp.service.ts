@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { TweetState, Tweet } from './rx-store/models';
+import { Tweet } from './rx-store/models';
 import * as TweetsActions from './rx-store/tweets.actions';
 import { AppState } from './global-store/app.reducer';
 

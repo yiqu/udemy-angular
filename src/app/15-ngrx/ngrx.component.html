@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mb-3">
   <div class="row">
     <div class="col-md-12">
       <h5>Practice 15 - NgRx</h5>
@@ -66,8 +66,16 @@
 
   <div class="row">
     <div class="col-sm-4" *ngIf="!currentUser">
-      <div class="text-center">Sign in</div>
+      <div class="text-center" *ngIf="!signinLoading">Sign in</div>
+      <ng-container *ngIf="signinLoading">
+        <div>
+          Signing in...
+        </div>
+        <mat-spinner [diameter]="25"></mat-spinner>
+      </ng-container>
     </div>
+
+    <ng-container *ngIf="signinError">{{signinError}}</ng-container>
     <div class="col-sm-4" *ngIf="currentUser">
       Hi, {{currentUser.email}}
     </div>
@@ -86,4 +94,6 @@
       <button class="btn btn-primary btn-sm" (click)="onSignOut()">Sign Out</button>
     </div>
   </div>
+
+  <router-outlet></router-outlet>
 </div>

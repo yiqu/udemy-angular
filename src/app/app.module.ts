@@ -47,6 +47,8 @@ import { AuthModule } from './14-auth/auth.module';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './15-ngrx/global-store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './15-ngrx/auth/auth.effects';
 
 @NgModule({
   declarations: [
@@ -101,6 +103,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     environment.production ? [] : StoreDevtoolsModule.instrument({
       maxAge: 20
     }),
+    EffectsModule.forRoot([AuthEffects]),
     AppRoutingModule
   ],
 

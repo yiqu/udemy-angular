@@ -7,6 +7,8 @@ import { NgRxComponentService } from './comp.service';
 import { AppState } from './global-store/app.reducer';
 import { AuthService } from '../14-auth/auth.service';
 import { FireUser } from '../14-auth/auth.model';
+import * as fromAuthActions from './auth/auth.actions';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -24,11 +26,13 @@ export class NgrxComponent implements OnInit, OnDestroy {
 
   signinUserName: string = "test@test.com";
   signinUserPassword: string = "123456";
+  signinLoading: boolean;
+  signinError: any;
 
   currentUser: FireUser;
 
   constructor(public store: Store<AppState>, public ns: NgRxComponentService,
-    public as: AuthService) {
+    public as: AuthService, public router: Router, public route: ActivatedRoute) {
 
   }
 
@@ -53,7 +57,11 @@ export class NgrxComponent implements OnInit, OnDestroy {
     )
     .subscribe(
       (res: UserState) => {
+        console.log(res)
+        this.signinLoading = res.loading;
+        this.signinError = res.error;
         this.currentUser = res.user;
+        //this.router.navigate(['landing'], {relativeTo: this.route});
       }
     )
 
@@ -86,17 +94,9 @@ export class NgrxComponent implements OnInit, OnDestroy {
   }
 
   onSignIn() {
-    this.as.signInUserAndNgrx(this.signinUserName, this.signinUserPassword).subscribe(
-      (res) => {
-        console.log(res)
-      },
-      (err) => {
-
-      },
-      () => {
-        console.log("signed in")
-      }
-    )
+    const name = this.signinUserName;
+    const pw = this.signinUserPassword;
+    this.store.dispatch(new fromAuthActions.LoginStart({email: name, password: pw}));
   }
 
   onSignOut() {

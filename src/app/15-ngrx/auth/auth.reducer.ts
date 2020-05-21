@@ -5,7 +5,9 @@ import * as fromAuthAction from './auth.actions';
 
 
 const inititalState: UserState = {
-  user: null
+  user: null,
+  loading: false,
+  error: null
 }
 
 
@@ -15,14 +17,34 @@ export function authReducer(state = inititalState, action: AuthAction): UserStat
       const u = action.payload;
       return {
         ...state,
-        user: u
+        user: u,
+        loading: false,
+        error: null
       }
     }
     case fromAuthAction.LOGOUT_DONE: {
       const u = action.payload;
       return {
         ...state,
-        user: u
+        user: u,
+        loading: false,
+        error: null
+      }
+    }
+    case fromAuthAction.LOGIN_START: {
+      return {
+        ...state,
+        user: null,
+        loading: true,
+        error: null
+      }
+    }
+    case fromAuthAction.LOGIN_FAILED: {
+      return {
+        ...state,
+        user: null,
+        loading: false,
+        error: action.payload
       }
     }
     default: {

@@ -7,7 +7,8 @@ const inititalState: TweetState = {
   postedTweets: [
     new Tweet("Kevin", "Hello Reducers!", new Date().getTime(), "0", false, "SENT"),
     new Tweet("Kevin", "Hello Actions!", new Date().getTime(), "1", false, "SENT"),
-  ]
+  ],
+  loading: false
 }
 
 export function userTweetsReducer(state: TweetState = inititalState,
