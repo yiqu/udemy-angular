@@ -1,10 +1,11 @@
+import { FireUser } from 'src/app/14-auth/auth.model';
 
 export interface TweetState {
   postedTweets: Tweet[];
 }
 
-export interface AppState {
-  userTweets: TweetState
+export interface UserState {
+  user: FireUser
 }
 
 export class Tweet {

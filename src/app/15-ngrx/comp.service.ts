@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { TweetState, AppState, Tweet } from './rx-store/models';
+import { TweetState, Tweet } from './rx-store/models';
 import * as TweetsActions from './rx-store/tweets.actions';
+import { AppState } from './global-store/app.reducer';
 
 @Injectable({
   providedIn: 'root'

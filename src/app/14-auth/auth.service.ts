@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Tweet } from '../11-http/http.component';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as fromAuthActions from '../15-ngrx/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export class AuthService {
   user$: BehaviorSubject<FireUser> = new BehaviorSubject<FireUser>(null);
 
   constructor(public http: HttpClient, public firestore: AngularFireDatabase,
-    public us: Utilservice, public router: Router) {
+    public us: Utilservice, public router: Router, public store: Store) {
   }
 
   createParams() {
@@ -85,6 +87,19 @@ export class AuthService {
       return this.postData<T>(this.baseSignInWithPasswordUrl, bod, apiKeyParam).pipe(
         catchError(this.handleFirebaseSignInUpError),
         tap((u: HttpResponse<T>) => this.handleAuthentication(u))
+      );;
+    }
+  }
+
+  signInUserAndNgrx<T>(email: string, pw: string): Observable<HttpResponse<T>> {
+    if (email && pw) {
+      const bod = new FirebaseSignUpRestRequestBody(email, pw);
+      const apiKeyParam = {
+        key: environment.firebaseConfig.apiKey
+      }
+      return this.postData<T>(this.baseSignInWithPasswordUrl, bod, apiKeyParam).pipe(
+        catchError(this.handleFirebaseSignInUpError),
+        tap((u: HttpResponse<T>) => this.handleAuthenticationAndNgrx(u))
       );;
     }
   }
@@ -159,6 +174,25 @@ export class AuthService {
     this.saveInfoToLocalStorage(newUser);
   }
 
+  handleAuthenticationAndNgrx<T>(u: HttpResponse<T>) {
+    const info = u.body;
+    const expiresInSeconds: number = (+info['expiresIn']);
+    const expireDateInSeconds: number = (new Date().getTime()) + ((expiresInSeconds) * 1000);
+    const expireDate: Date = new Date(expireDateInSeconds);
+
+    const newUser = new FireUser(
+      info['displayName'],
+      info['email'],
+      info['localId'],
+      info['refreshToken'],
+      info['registered'],
+      info['idToken'],
+      expireDate);
+
+    this.store.dispatch(new fromAuthActions.Login(newUser));
+    this.saveInfoToLocalStorage(newUser);
+  }
+
   getTweets(): Observable<Tweet[]> {
     return this.getData("tweets2.json").pipe(
       map((val: HttpResponse<any>) => {
@@ -182,6 +216,11 @@ export class AuthService {
     this.router.navigate(['./', 'auth']);
   }
 
+  onLogout2() {
+    localStorage.removeItem("fire-user");
+    this.store.dispatch(new fromAuthActions.Logout(null));
+  }
+
   tryAutoLogin() {
     const localStorageUser: any = JSON.parse(localStorage.getItem("fire-user"));
     if (!localStorageUser) {
@@ -193,6 +232,20 @@ export class AuthService {
       localStorageUser.refreshToken, reg, localStorageUser._token, expireDate);
     if (u.token) {
       this.user$.next(u);
+    }
+  }
+
+  tryAutoLoginNgrx() {
+    const localStorageUser: any = JSON.parse(localStorage.getItem("fire-user"));
+    if (!localStorageUser) {
+      return;
+    }
+    const reg = localStorageUser['registered'];
+    const expireDate: Date = new Date(localStorageUser._tokenExpireDate);
+    const u: FireUser = new FireUser(localStorageUser.displayName, localStorageUser.email, localStorageUser.localId,
+      localStorageUser.refreshToken, reg, localStorageUser._token, expireDate);
+    if (u.token) {
+      this.store.dispatch(new fromAuthActions.Login(u));
     }
   }
 

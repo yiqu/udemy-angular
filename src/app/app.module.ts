@@ -44,6 +44,9 @@ import { CompComponent } from './1-components/comp.component';
 import { SuccessComponent } from './1-components/success/success.component';
 import { WarningComponent } from './1-components/warning/warning.component';
 import { AuthModule } from './14-auth/auth.module';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './15-ngrx/global-store/app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -94,6 +97,10 @@ import { AuthModule } from './14-auth/auth.module';
     RoutingComponentModule,
     HttpClientModule,
     AuthModule,
+    StoreModule.forRoot(appReducers),
+    environment.production ? [] : StoreDevtoolsModule.instrument({
+      maxAge: 20
+    }),
     AppRoutingModule
   ],
 

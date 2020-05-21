@@ -10,7 +10,7 @@ const inititalState: TweetState = {
   ]
 }
 
-export function UserTweetsReducer(state: TweetState = inititalState,
+export function userTweetsReducer(state: TweetState = inititalState,
   action: TweetsActions.TweetAction): TweetState {
 
   switch (action.type) {

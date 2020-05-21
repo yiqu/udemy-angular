@@ -7,21 +7,19 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModuleBundle } from '../shared/material-bundle.module';
 import { NgrxRoutingModule } from './ngrx-routing.module';
 import { StoreModule } from '@ngrx/store';
-import { UserTweetsReducer } from './rx-store/tweets.reducer';
 import { NgRxComponentService } from './comp.service';
 import { TweetEditorComponent } from './tweet-editor/editor.component';
+import { appReducers } from './global-store/app.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MaterialModuleBundle,
-    StoreModule.forRoot({
-      userTweets: UserTweetsReducer
-    }),
-    environment.production ? [] : StoreDevtoolsModule.instrument({
-      maxAge: 20
-    }),
+    //StoreModule.forRoot(appReducers),
+    // environment.production ? [] : StoreDevtoolsModule.instrument({
+    //   maxAge: 20
+    // }),
     NgrxRoutingModule
   ],
 

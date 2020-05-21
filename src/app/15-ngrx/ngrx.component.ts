@@ -1,9 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { TweetState, AppState, Tweet } from './rx-store/models';
+import { TweetState, Tweet, UserState } from './rx-store/models';
 import { takeUntil } from 'rxjs/operators';
 import { NgRxComponentService } from './comp.service';
+import { AppState } from './global-store/app.reducer';
+import { AuthService } from '../14-auth/auth.service';
+import { FireUser } from '../14-auth/auth.model';
 
 
 @Component({
@@ -19,7 +22,13 @@ export class NgrxComponent implements OnInit, OnDestroy {
   userName: string = "Me";
   userTweet: string = "Something...";
 
-  constructor(public store: Store<AppState>, public ns: NgRxComponentService) {
+  signinUserName: string = "test@test.com";
+  signinUserPassword: string = "123456";
+
+  currentUser: FireUser;
+
+  constructor(public store: Store<AppState>, public ns: NgRxComponentService,
+    public as: AuthService) {
 
   }
 
@@ -36,6 +45,15 @@ export class NgrxComponent implements OnInit, OnDestroy {
       },
       () => {
         console.log("done");
+      }
+    )
+
+    this.store.select("verifiedUser").pipe(
+      takeUntil(this.compDest$)
+    )
+    .subscribe(
+      (res: UserState) => {
+        this.currentUser = res.user;
       }
     )
 
@@ -65,6 +83,24 @@ export class NgrxComponent implements OnInit, OnDestroy {
   onTweetDelete(t: Tweet) {
     console.log(t)
     this.ns.deleteTweet(t);
+  }
+
+  onSignIn() {
+    this.as.signInUserAndNgrx(this.signinUserName, this.signinUserPassword).subscribe(
+      (res) => {
+        console.log(res)
+      },
+      (err) => {
+
+      },
+      () => {
+        console.log("signed in")
+      }
+    )
+  }
+
+  onSignOut() {
+    this.as.onLogout2();
   }
 
   ngOnDestroy() {
