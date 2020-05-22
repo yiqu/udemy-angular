@@ -47,6 +47,15 @@ export function authReducer(state = inititalState, action: AuthAction): UserStat
         error: action.payload
       }
     }
+    case fromAuthAction.LOGIN_AUTO_FAILED: {
+      return {
+        ...state,
+        user: null,
+        loading: false,
+        error:null
+      }
+    }
+
     default: {
       return state;
     }

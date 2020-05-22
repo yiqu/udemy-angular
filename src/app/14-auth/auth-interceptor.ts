@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { FireUser } from './auth.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthKeyInterceptor implements HttpInterceptor {
 
   constructor(public as: AuthService) {
@@ -17,6 +15,7 @@ export class AuthKeyInterceptor implements HttpInterceptor {
     return this.as.user$.pipe(
       take(1),
       exhaustMap((u: FireUser) => {
+        console.log("in INTERCEPTOR")
         if (!u || req.method === "GET") {
           return next.handle(req);
         } else {

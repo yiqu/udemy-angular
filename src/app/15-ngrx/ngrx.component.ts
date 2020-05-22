@@ -37,6 +37,7 @@ export class NgrxComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.as.tryAutoLoginNgrx();
     // userTweets property is defined in module file
     this.store.select('userTweets').pipe(
       takeUntil(this.compDest$)

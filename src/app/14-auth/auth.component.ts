@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Utilservice } from '../shared/util.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FirebaseSignUpResponse, FirebaseSignInResponse, FireUser } from './auth.model';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthKeyInterceptor } from './auth-interceptor';
 
 @Component({
   selector: 'app-auth',
   templateUrl: 'auth.component.html',
-  styleUrls: ['./auth.component.css']
+  styleUrls: ['./auth.component.css'],
+
 })
 export class AuthComponent implements OnInit {
 

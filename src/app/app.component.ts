@@ -34,6 +34,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.as.tryAutoLogin();
-    this.as.tryAutoLoginNgrx();
   }
 }

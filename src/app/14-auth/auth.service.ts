@@ -254,7 +254,6 @@ export class AuthService {
   }
 
   onLogout2() {
-    localStorage.removeItem("fire-user");
     this.store.dispatch(new fromAuthActions.Logout(null));
   }
 
@@ -273,18 +272,8 @@ export class AuthService {
   }
 
   tryAutoLoginNgrx() {
-    const localStorageUser: any = JSON.parse(localStorage.getItem("fire-user"));
-    if (!localStorageUser) {
-      return;
-    }
-    const reg = localStorageUser['registered'];
-    const expireDate: Date = new Date(localStorageUser._tokenExpireDate);
-    const u: FireUser = new FireUser(localStorageUser.displayName, localStorageUser.email, localStorageUser.localId,
-      localStorageUser.refreshToken, reg, localStorageUser._token, expireDate);
-    if (u.token) {
-      console.log("auto logging in now...")
-      this.store.dispatch(new fromAuthActions.Login(u));
-    }
+    console.log("auto logging in now...");
+    this.store.dispatch(new fromAuthActions.LoginAuto());
   }
 
   saveInfoToLocalStorage(u: FireUser) {

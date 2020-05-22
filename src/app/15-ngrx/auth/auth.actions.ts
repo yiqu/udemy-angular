@@ -6,6 +6,8 @@ export const LOGIN_START = "[Auth] LOG_IN_START";
 export const LOGIN_DONE = "[Auth] LOG_IN_DONE";
 export const LOGOUT_DONE = "[Auth] LOG_OUT_DONE";
 export const LOGIN_FAILED = "[Auth] LOG_IN_FAILED";
+export const LOGIN_AUTO = "[Auth] Auto Auth Login";
+export const LOGIN_AUTO_FAILED = "[Auth] Auto Auth Login Failed";
 
 export class Login implements Action {
   readonly type = LOGIN_DONE;
@@ -42,8 +44,19 @@ export class LoginFailed implements Action {
   }
 }
 
+export class LoginAuto implements Action {
+  readonly type = LOGIN_AUTO;
+
+}
+
+export class LoginAutoFailed implements Action {
+  readonly type = LOGIN_AUTO_FAILED;
+}
+
 export type AuthAction =
     Login
   | Logout
   | LoginStart
   | LoginFailed
+  | LoginAuto
+  | LoginAutoFailed
