@@ -1,0 +1,22 @@
+<div class="row mb-2">
+  <div class="col-sm-12">
+    Car State (trigger count: {{triggerCount}})
+    <div>
+      Driver name: {{driverName}} - date: {{startDate}} - car is started? {{carStarted}}
+    </div>
+    <div>
+      {{driverUsingFeature$ | async}}
+    </div>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="div col-sm-12">
+    <button mat-stroked-button class="mr-2" (click)="onStartup('Kevin')">Fire car start up with Kevin as driver </button>
+    <button mat-stroked-button (click)="onStartup('Bekah')">Fire car startup action with Bekah as driver</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    The trigger count will not increase unless the driver has changed. This is because distintUntilChanged is built into select() operator
+  </div>
+</div>

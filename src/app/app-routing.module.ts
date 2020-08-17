@@ -12,6 +12,7 @@ import { HttpPracComponent } from './11-http/http.component';
 import { AnimationPracComponent } from './13-animation/animation.component';
 import { CompComponent } from './1-components/comp.component';
 import { AuthComponent } from './14-auth/auth.component';
+import { RxJsComponent } from './16-rxjs/rxjs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'ngrx',
     loadChildren: () => import('./15-ngrx/ngrx.module').then(m => m.NgrxModule)
   },
+  { path: 'rxjs', component: RxJsComponent },
   { path: '**', component: NotFoundComponent }
 ]
 

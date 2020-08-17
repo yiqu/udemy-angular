@@ -58,7 +58,7 @@ export class NgrxComponent implements OnInit, OnDestroy {
     )
     .subscribe(
       (res: UserState) => {
-        console.log(res)
+        //console.log(res)
         this.signinLoading = res.loading;
         this.signinError = res.error;
         this.currentUser = res.user;

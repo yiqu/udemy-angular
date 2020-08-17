@@ -11,6 +11,7 @@ import { NgRxComponentService } from './comp.service';
 import { TweetEditorComponent } from './tweet-editor/editor.component';
 import { appReducers } from './global-store/app.reducer';
 import { NgrxLandingComponent } from './landing/landing.component';
+import { NgRx2Component } from './new-way/ngrx2.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { NgrxLandingComponent } from './landing/landing.component';
   declarations: [
     NgrxComponent,
     TweetEditorComponent,
-    NgrxLandingComponent
+    NgrxLandingComponent,
+    NgRx2Component
   ],
 
   providers: [

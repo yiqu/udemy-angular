@@ -49,6 +49,7 @@ import { appReducers } from './15-ngrx/global-store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './15-ngrx/auth/auth.effects';
+import { RxJsComponent } from './16-rxjs/rxjs.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { AuthEffects } from './15-ngrx/auth/auth.effects';
     CreateComponent,
     DateDisplayPipe,
     AnimationPracComponent,
-    DialogEditComponent
+    DialogEditComponent,
+    RxJsComponent
   ],
 
   imports: [

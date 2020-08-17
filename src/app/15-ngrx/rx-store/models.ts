@@ -19,3 +19,9 @@ export class Tweet {
 
   }
 }
+
+export interface ICarState {
+  carStarted: boolean;
+  driver: string;
+  carStartedDate: number;
+}

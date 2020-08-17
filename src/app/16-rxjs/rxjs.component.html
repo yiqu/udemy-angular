@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Practice 16 - RxJs</h5>
+      <hr>
+      <h6>Requirments:</h6>
+      <ol>
+        <li>Using ShareReplay to only call rest endpoint once, for 2 subscriptions.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <ng-container *ngIf="(tweets$ | async) as tweet">
+        <div>
+          {{tweet}}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <ng-container *ngIf="(tweets$ | async) as tweet">
+        <div>
+          {{tweet}}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
