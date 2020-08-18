@@ -272,7 +272,7 @@ export class AuthService {
   }
 
   tryAutoLoginNgrx() {
-    console.log("auto logging in now...");
+    //console.log("auto logging in now...");
     this.store.dispatch(new fromAuthActions.LoginAuto());
   }
 

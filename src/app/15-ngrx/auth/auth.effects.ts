@@ -78,7 +78,7 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(fromAuthActions.LOGIN_AUTO),
       map(() => {
-        console.log("tryna login")
+        //console.log("tryna login")
         const localStorageUser: any = JSON.parse(localStorage.getItem("fire-user-ngrx"));
         if (!localStorageUser) {
           return new fromAuthActions.LoginAutoFailed();

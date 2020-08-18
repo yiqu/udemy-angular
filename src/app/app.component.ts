@@ -11,6 +11,8 @@ export class AppComponent implements OnInit {
   headerTitle: string = "Udemy Angular Guide Practices";
   footerTitle: string = "KQ @2020";
   navList: NavItem[] = [];
+  topGaP: number = 56;
+  bottomGap: number = 41;
 
   constructor(public as: AuthService) {
     this.navList.push(
